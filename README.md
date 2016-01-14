@@ -40,25 +40,22 @@ Web application for BankOfBraavos, Clash of Clans.
 
     We don't have one!  Implementing one discourages members from requesting troops, thereby decreasing clan participation.  If a member is found to be deliberately exploiting this policy it will be addressed on a case by case basis.
 
-4. Utilize superior teamwork and strategy to win clan wars.
++ **Utilize superior teamwork and strategy to win clan wars.**
 
-War Schedule:  We operate on a two war/week schedule.  Wars start Monday and Wednesday evenings at 7PM CST. The schedule allows for consistent, reliable start times as well as a day off each week. Any clan member is encouraged to see that the war starts at the appropriate time.
+* **War Schedule:**
 
-Filling War Clan Castles: This is very important, often clan castle troops will make the difference between a successful defense and giving up easy stars.  While optimal strategy would be for each of the castles to have the highest level troop possible, such a strategy would be unbearably costly to the highest ranked clan members.  To balance financial burdens with troop effectiveness, please contribute to the Clan Castles if you have access to:
+  We operate on a three war/week schedule.  Wars start Monday/Wednesday/Friday evenings at 7:30PM CST. The schedule allows for consistent, reliable start times as well as a day off each week. Every clan member is encouraged to help start the war on time.
 
+* **Filling War Clan Castles:**
 
-Wizard
->= Level 5
-Dragon
->= Level 3
-Valkyrie
->= Level 2
-Archer
->= Level 5
-Balloon
->= Level 5
-Lava Hound
->= Level 1
+  Every Clan member should seek to frill a couple War Clan Clastiles if they have access to the following troops:
+
+  * Wizard Level 6
+  * Dragon Level 4
+  * Valkyrie Level 2
+  * Balloon Level 5
+  * Lava Hound Level 2
+  (Levels reflect donation upgrade. Example: It is OK to donate a Wizard Level 5 that becomes a Level 6 from donation upgrade.)
 
 
 Lastly, please make a brief post in clan chat after you made a significant donation to the Clan Castles.  This will serve as a reminder to other members that we need to continue filling castles.
