@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @violation.member %>
+</p>
+
+<p>
+  <strong>Desciption:</strong>
+  <%= @violation.desciption %>
+</p>
+
+<%= link_to 'Edit', edit_violation_path(@violation) %> |
+<%= link_to 'Back', violations_path %>

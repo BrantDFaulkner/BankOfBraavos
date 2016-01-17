@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :violations
+  resources :members
   devise_for :users
   get 'welcome/index'
 
