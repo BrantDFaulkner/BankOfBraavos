@@ -57,6 +57,7 @@ members = [
 
 members.each { |member|
   Member.new(user_name: member[0], rank: member[1], status: member[2])
+  print "."
 }
 
 
