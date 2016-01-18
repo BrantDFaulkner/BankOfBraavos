@@ -1,29 +1,37 @@
-<p id="notice"><%= notice %></p>
+<%= link_to 'Add Member', new_member_path, class: "btn btn-info" %>
 
-<h1>Listing Members</h1>
+<h1>Leader</h1>
+<% @leaders.each do |member| %>
+  <div class"well well-sm">
+    <%= member.user_name %> |
+    <%= link_to 'Show', member %> |
+    <%= link_to 'Edit', edit_member_path(member) %>
+  </div>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>User name</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<h1>Co Leaders</h1>
+  <% @co_leaders.each do |member| %>
+<div class"well well-sm">
+  <%= member.user_name %> |
+  <%= link_to 'Show', member %> |
+  <%= link_to 'Edit', edit_member_path(member) %>
+</div>
+<% end %>
 
-  <tbody>
-    <% @members.each do |member| %>
-      <tr>
-        <td><%= member.user_name %></td>
-        <td><%= member.status %></td>
-        <td><%= link_to 'Show', member %></td>
-        <td><%= link_to 'Edit', edit_member_path(member) %></td>
-        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h1>Elders</h1>
+<% @elders.each do |member| %>
+  <div>
+    <%= member.user_name %> |
+    <%= link_to 'Show', member %> |
+    <%= link_to 'Edit', edit_member_path(member) %>
+  </div>
+<% end %>
 
-<br>
-
-<%= link_to 'New Member', new_member_path %>
+<h1>Members</h1>
+<% @members.each do |member| %>
+  <div>
+    <%= member.user_name %> |
+    <%= link_to 'Show', member %> |
+    <%= link_to 'Edit', edit_member_path(member) %>
+  </div>
+<% end %>

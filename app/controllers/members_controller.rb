@@ -4,7 +4,10 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all
+    @leaders =  Member.where("rank = 'leader'")
+    @co_leaders = Member.where("rank = 'coleader'")
+    @elders = Member.where("rank = 'elder'")
+    @members = Member.where("rank = 'member'")
   end
 
   # GET /members/1
@@ -67,8 +70,7 @@ class MembersController < ApplicationController
       @member = Member.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:user_name, :status)
+      params.require(:member).permit(:user_name, :status, :rank)
     end
 end

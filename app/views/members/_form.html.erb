@@ -1,25 +1,17 @@
-<%= form_for(@member) do |f| %>
-  <% if @member.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h2>
 
-      <ul>
-      <% @member.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <%= form_for(@member) do |f| %>
+    <div class="field">
+      <%= f.label :user_name %><br>
+      <%= f.text_field :user_name %>
+    </div>
+    <div class="field">
+      <%= f.label :rank %><br>
+      <%= f.select(:rank, ["Leader", "Co-Leader", "Elder", "Member"]) %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Add Member', :class => 'btn btn-success' %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_name %><br>
-    <%= f.text_field :user_name %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+
