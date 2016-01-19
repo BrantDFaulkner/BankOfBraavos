@@ -45,9 +45,9 @@ ActiveRecord::Schema.define(version: 20160117021646) do
 
   create_table "violations", force: :cascade do |t|
     t.integer  "member_id"
-    t.string   "desciption"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "violations", ["member_id"], name: "index_violations_on_member_id", using: :btree

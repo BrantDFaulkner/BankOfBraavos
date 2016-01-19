@@ -1,14 +1,15 @@
-<p id="notice"><%= notice %></p>
+<h4><%= @member.user_name %> Profile</h4>
 
-<p>
-  <strong>User name:</strong>
-  <%= @member.user_name %>
-</p>
+<h5>Member Status:</h5>
+<p><%= @member.status %></p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @member.status %>
-</p>
+<h5>Violation History</h5>
+<% @violations.each do |violation| %>
+  <p><%= violation.created_at %></p>
+  <p><%= violation.description %></p>
+<% end %>
+
+
 
 <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>

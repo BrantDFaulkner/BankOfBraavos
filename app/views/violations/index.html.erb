@@ -14,8 +14,8 @@
   <tbody>
     <% @violations.each do |violation| %>
       <tr>
-        <td><%= violation.member %></td>
-        <td><%= violation.desciption %></td>
+        <td><%= violation.member.user_name %></td>
+        <td><%= violation.description %></td>
         <td><%= link_to 'Show', violation %></td>
         <td><%= link_to 'Edit', edit_violation_path(violation) %></td>
         <td><%= link_to 'Destroy', violation, method: :delete, data: { confirm: 'Are you sure?' } %></td>

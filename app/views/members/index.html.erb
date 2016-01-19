@@ -1,28 +1,25 @@
-<%= link_to 'Add Member', new_member_path, class: "btn btn-info" %>
+<%= link_to 'Add Member', new_member_path, class: "btn btn-success" %>
 
-<h1>Leader</h1>
+<h4>Leader</h4>
 <% @leaders.each do |member| %>
   <div class"well well-sm">
-    <%= member.user_name %> |
-    <%= link_to 'Show', member %> |
+    <%= link_to member.user_name, member %> |
     <%= link_to 'Edit', edit_member_path(member) %>
   </div>
 <% end %>
 
-<h1>Co Leaders</h1>
+<h4>Co Leaders</h4>
   <% @co_leaders.each do |member| %>
 <div class"well well-sm">
-  <%= member.user_name %> |
-  <%= link_to 'Show', member %> |
+  <%= link_to member.user_name, member %> |
   <%= link_to 'Edit', edit_member_path(member) %>
 </div>
 <% end %>
 
-<h1>Elders</h1>
+<h4>Elders</h4>
 <% @elders.each do |member| %>
   <div>
-    <%= member.user_name %> |
-    <%= link_to 'Show', member %> |
+    <%= link_to member.user_name, member %> |
     <%= link_to 'Edit', edit_member_path(member) %>
   </div>
 <% end %>
@@ -30,8 +27,7 @@
 <h1>Members</h1>
 <% @members.each do |member| %>
   <div>
-    <%= member.user_name %> |
-    <%= link_to 'Show', member %> |
+    <%= link_to member.user_name, member %> |
     <%= link_to 'Edit', edit_member_path(member) %>
   </div>
 <% end %>

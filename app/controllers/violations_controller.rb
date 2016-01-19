@@ -72,6 +72,6 @@ class ViolationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def violation_params
-      params.require(:violation).permit(:member_id, :desciption)
+      params.require(:violation).permit(:member_id, :description)
     end
 end
