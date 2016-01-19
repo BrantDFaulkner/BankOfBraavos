@@ -15,6 +15,9 @@ class ViolationsController < ApplicationController
   # GET /violations/new
   def new
     @violation = Violation.new
+    @members = Member.all.map do |member|
+      [member.user_name, member.id]
+    end
   end
 
   # GET /violations/1/edit
