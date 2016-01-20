@@ -7,7 +7,7 @@
 <% if user_signed_in? %>
   <%= form_for(@participant) do |f| %>
     <div class="field">
-      <%= f.select(:member_id, @active_members) %>
+      <%= f.select(:member_id, @available_members) %>
       <%= f.hidden_field :war_id, :value => @war.id%>
     </div>
     <div class="actions">

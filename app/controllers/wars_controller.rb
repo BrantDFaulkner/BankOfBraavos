@@ -7,13 +7,14 @@ class WarsController < ApplicationController
     @wars = War.all
   end
 
-  # GET /wars/1
-  # GET /wars/1.json
   def show
-    @active_members = active_members.all.map do |member|
-      [member.user_name, member.id]
-    end
     @participants = @war.participants
+    participant_ids = @participants.map do |participant|
+      participant.member.id
+    end
+    @available_members = active_members.map do |member|
+        [member.user_name, member.id] unless participant_ids.include?(member.id)
+    end.compact
     @participant = Participant.new
   end
 
@@ -76,6 +77,6 @@ class WarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def war_params
-      params.require(:war).permit(:opponent, :result)
+      params.require(:war).permit(:opponent, :stars, :opponent_stars, :tie_breaker)
     end
 end
