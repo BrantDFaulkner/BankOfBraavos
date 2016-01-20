@@ -15,12 +15,6 @@ class ViolationsController < ApplicationController
   # GET /violations/new
   def new
     @violation = Violation.new
-    @members = Member.all.map do |member|
-      [member.user_name, member.id]
-    @descriptions = ViolationDescription.all.map { |description|
-      [description.content, description.id]
-    }
-    end
   end
 
   # GET /violations/1/edit
@@ -75,6 +69,6 @@ class ViolationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def violation_params
-      params.require(:violation).permit(:member_id, :description)
+      params.require(:violation).permit(:violation_type_id, :particpant_id)
     end
 end

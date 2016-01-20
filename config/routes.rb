@@ -1,18 +1,24 @@
 Rails.application.routes.draw do
-  resources :violation_descriptions
   get 'pages/welcome'
-  get 'pages/policies'
 
+  get 'pages/policy'
+
+  get 'welcome/policy'
+
+  resources :war_zeros
+  resources :war_heros
   resources :violations
+  resources :violation_types
+  resources :participants
+  resources :wars
   resources :members
+  resources :statuses
+  resources :ranks
   devise_for :users
-  get 'welcome/index'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
   root 'pages#welcome'
 
   # Example of regular route:

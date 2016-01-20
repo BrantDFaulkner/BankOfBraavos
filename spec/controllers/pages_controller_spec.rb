@@ -9,9 +9,9 @@ RSpec.describe PagesController, type: :controller do
     end
   end
 
-  describe "GET #policies" do
+  describe "GET #policy" do
     it "returns http success" do
-      get :policies
+      get :policy
       expect(response).to have_http_status(:success)
     end
   end

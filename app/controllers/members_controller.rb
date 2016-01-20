@@ -1,19 +1,20 @@
 class MembersController < ApplicationController
-  has_many :violations
-
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   # GET /members
+  # GET /members.json
   def index
-    @leaders =  Member.where("rank = 'leader'")
-    @co_leaders = Member.where("rank = 'coleader'")
-    @elders = Member.where("rank = 'elder'")
-    @members = Member.where("rank = 'member'")
+    @members = Member.all
+
+    # @leaders =  Member.where("rank = 'leader'")
+    # @co_leaders = Member.where("rank = 'coleader'")
+    # @elders = Member.where("rank = 'elder'")
+    # @members = Member.where("rank = 'member'")
   end
 
   # GET /members/1
+  # GET /members/1.json
   def show
-    @violations = @member.violations
   end
 
   # GET /members/new
@@ -26,6 +27,7 @@ class MembersController < ApplicationController
   end
 
   # POST /members
+  # POST /members.json
   def create
     @member = Member.new(member_params)
 
@@ -41,6 +43,7 @@ class MembersController < ApplicationController
   end
 
   # PATCH/PUT /members/1
+  # PATCH/PUT /members/1.json
   def update
     respond_to do |format|
       if @member.update(member_params)
@@ -54,6 +57,7 @@ class MembersController < ApplicationController
   end
 
   # DELETE /members/1
+  # DELETE /members/1.json
   def destroy
     @member.destroy
     respond_to do |format|
@@ -68,7 +72,8 @@ class MembersController < ApplicationController
       @member = Member.find(params[:id])
     end
 
+    # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:user_name, :status, :rank)
+      params.require(:member).permit(:user_name, :rank_id, :status_id)
     end
 end

@@ -5,11 +5,13 @@ RSpec.describe "members/index", type: :view do
     assign(:members, [
       Member.create!(
         :user_name => "User Name",
-        :status => "Status"
+        :rank => nil,
+        :status => nil
       ),
       Member.create!(
         :user_name => "User Name",
-        :status => "Status"
+        :rank => nil,
+        :status => nil
       )
     ])
   end
@@ -17,6 +19,7 @@ RSpec.describe "members/index", type: :view do
   it "renders a list of members" do
     render
     assert_select "tr>td", :text => "User Name".to_s, :count => 2
-    assert_select "tr>td", :text => "Status".to_s, :count => 2
+    assert_select "tr>td", :text => nil.to_s, :count => 2
+    assert_select "tr>td", :text => nil.to_s, :count => 2
   end
 end

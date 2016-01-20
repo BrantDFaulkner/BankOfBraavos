@@ -1,3 +1,4 @@
 class Member < ActiveRecord::Base
-  has_many :violations
+  belongs_to :rank
+  belongs_to :status
 end

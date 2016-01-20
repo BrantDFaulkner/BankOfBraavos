@@ -4,12 +4,12 @@ RSpec.describe "violations/index", type: :view do
   before(:each) do
     assign(:violations, [
       Violation.create!(
-        :member => nil,
-        :desciption => "Desciption"
+        :violation_type => nil,
+        :particpant => nil
       ),
       Violation.create!(
-        :member => nil,
-        :desciption => "Desciption"
+        :violation_type => nil,
+        :particpant => nil
       )
     ])
   end
@@ -17,6 +17,6 @@ RSpec.describe "violations/index", type: :view do
   it "renders a list of violations" do
     render
     assert_select "tr>td", :text => nil.to_s, :count => 2
-    assert_select "tr>td", :text => "Desciption".to_s, :count => 2
+    assert_select "tr>td", :text => nil.to_s, :count => 2
   end
 end

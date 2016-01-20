@@ -1,36 +1,31 @@
+<p id="notice"><%= notice %></p>
 
-<h2>Clan Members</h2>
-<%= link_to 'Add Member', new_member_path, class: "btn btn-success" %>
+<h1>Listing Members</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User name</th>
+      <th>Rank</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.user_name %></td>
+        <td><%= member.rank %></td>
+        <td><%= member.status %></td>
+        <td><%= link_to 'Show', member %></td>
+        <td><%= link_to 'Edit', edit_member_path(member) %></td>
+        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <br>
-<br>
-<% @leaders.each do |member| %>
-  <div class="member well well-sm">
-    <span>Leader</span> |
-    <span><%= link_to member.user_name, member %></span>
-    <%= link_to 'Edit', edit_member_path(member), class: "admin" %>
-  </div>
-<% end %>
 
-<% @co_leaders.each do |member| %>
-  <div class="member well well-sm">
-    <span>Co-Leader</span> |
-    <span><%= link_to member.user_name, member %></span>
-    <%= link_to 'Edit', edit_member_path(member), class: "admin" %>
-  </div>
-<% end %>
-
-<% @elders.each do |member| %>
-  <div class="member well well-sm">
-    <span>Elder</span> |
-    <span><%= link_to member.user_name, member %></span>
-    <%= link_to 'Edit', edit_member_path(member), class: "admin" %>
-  </div>
-<% end %>
-
-<% @members.each do |member| %>
-  <div class="member well well-sm">
-    <span>Member</span> |
-    <span><%= link_to member.user_name, member %></span>
-    <%= link_to 'Edit', edit_member_path(member), class: "admin" %>
-  </div>
-<% end %>
+<%= link_to 'New Member', new_member_path %>
