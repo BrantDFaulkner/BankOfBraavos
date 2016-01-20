@@ -21,19 +21,12 @@ class ParticipantsController < ApplicationController
   def edit
   end
 
-  # POST /participants
-  # POST /participants.json
   def create
     @participant = Participant.new(participant_params)
-
-    respond_to do |format|
-      if @participant.save
-        format.html { redirect_to @participant, notice: 'Participant was successfully created.' }
-        format.json { render :show, status: :created, location: @participant }
-      else
-        format.html { render :new }
-        format.json { render json: @participant.errors, status: :unprocessable_entity }
-      end
+    if @participant.save
+      redirect_to :back, notice: "#{@participant.member.user_name} was added to the war."
+    else
+      render :new
     end
   end
 

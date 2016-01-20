@@ -10,11 +10,18 @@ class WarsController < ApplicationController
   # GET /wars/1
   # GET /wars/1.json
   def show
-    @members = Member.all.map do |member|
+    @active_members = active_members.all.map do |member|
       [member.user_name, member.id]
     end
     @participants = @war.participants
     @participant = Participant.new
+    if @war.result
+      @result = "Win"
+    elsif @war.result == false
+      @result = "Loss"
+    else
+      @result = "TBD"
+    end
   end
 
   # GET /wars/new
