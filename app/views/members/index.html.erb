@@ -1,33 +1,36 @@
+
+<h2>Clan Members</h2>
 <%= link_to 'Add Member', new_member_path, class: "btn btn-success" %>
-
-<h4>Leader</h4>
+<br>
+<br>
 <% @leaders.each do |member| %>
-  <div class"well well-sm">
-    <%= link_to member.user_name, member %> |
-    <%= link_to 'Edit', edit_member_path(member) %>
+  <div class="member well well-sm">
+    <span>Leader</span> |
+    <span><%= link_to member.user_name, member %></span>
+    <%= link_to 'Edit', edit_member_path(member), class: "admin" %>
   </div>
 <% end %>
 
-<h4>Co Leaders</h4>
-  <% @co_leaders.each do |member| %>
-<div class"well well-sm">
-  <%= link_to member.user_name, member %> |
-  <%= link_to 'Edit', edit_member_path(member) %>
-</div>
+<% @co_leaders.each do |member| %>
+  <div class="member well well-sm">
+    <span>Co-Leader</span> |
+    <span><%= link_to member.user_name, member %></span>
+    <%= link_to 'Edit', edit_member_path(member), class: "admin" %>
+  </div>
 <% end %>
 
-<h4>Elders</h4>
 <% @elders.each do |member| %>
-  <div>
-    <%= link_to member.user_name, member %> |
-    <%= link_to 'Edit', edit_member_path(member) %>
+  <div class="member well well-sm">
+    <span>Elder</span> |
+    <span><%= link_to member.user_name, member %></span>
+    <%= link_to 'Edit', edit_member_path(member), class: "admin" %>
   </div>
 <% end %>
 
-<h1>Members</h1>
 <% @members.each do |member| %>
-  <div>
-    <%= link_to member.user_name, member %> |
-    <%= link_to 'Edit', edit_member_path(member) %>
+  <div class="member well well-sm">
+    <span>Member</span> |
+    <span><%= link_to member.user_name, member %></span>
+    <%= link_to 'Edit', edit_member_path(member), class: "admin" %>
   </div>
 <% end %>

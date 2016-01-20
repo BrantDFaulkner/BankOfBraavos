@@ -17,6 +17,9 @@ class ViolationsController < ApplicationController
     @violation = Violation.new
     @members = Member.all.map do |member|
       [member.user_name, member.id]
+    @descriptions = ViolationDescription.all.map { |description|
+      [description.content, description.id]
+    }
     end
   end
 

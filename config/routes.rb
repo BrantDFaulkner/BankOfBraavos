@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :violation_descriptions
   get 'pages/welcome'
   get 'pages/policies'
 

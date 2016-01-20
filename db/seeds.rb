@@ -1,4 +1,12 @@
 
+violation_descriptions = [
+  "Did not attack during war.",
+  "Only used one war attack.",
+  "Attacked severely inappropriate base.",
+  "Attacked without legitimate war army."
+]
+
+
 members = [
   ["Blunderbuss", "leader", "active"],
   ["Andrew", "elder", "active"],
@@ -44,10 +52,24 @@ members = [
   ["Tyler", "member", "active"]
 ]
 
-members.each { |member|
-  Member.create!(user_name: member[0], rank: member[1], status: member[2])
-  print "."
-}
+members.each do |member|
+  Member.create!(
+    user_name: member[0],
+    rank: member[1],
+    status: member[2])
+end
+
+violation_descriptions.each do |description|
+  ViolationDescription.create!(
+    content: description
+    )
+end
+
+User.create!(
+  email: "brant@gmail.com",
+  password: "password",
+  permission: "admin"
+  )
 
 
 

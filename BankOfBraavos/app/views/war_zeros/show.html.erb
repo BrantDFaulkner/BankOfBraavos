@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Participant:</strong>
+  <%= @war_zero.participant %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @war_zero.description %>
+</p>
+
+<%= link_to 'Edit', edit_war_zero_path(@war_zero) %> |
+<%= link_to 'Back', war_zeros_path %>

@@ -1,8 +1,9 @@
 class MembersController < ApplicationController
+  has_many :violations
+
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   # GET /members
-  # GET /members.json
   def index
     @leaders =  Member.where("rank = 'leader'")
     @co_leaders = Member.where("rank = 'coleader'")
@@ -11,7 +12,6 @@ class MembersController < ApplicationController
   end
 
   # GET /members/1
-  # GET /members/1.json
   def show
     @violations = @member.violations
   end
@@ -26,7 +26,6 @@ class MembersController < ApplicationController
   end
 
   # POST /members
-  # POST /members.json
   def create
     @member = Member.new(member_params)
 
@@ -42,7 +41,6 @@ class MembersController < ApplicationController
   end
 
   # PATCH/PUT /members/1
-  # PATCH/PUT /members/1.json
   def update
     respond_to do |format|
       if @member.update(member_params)
@@ -56,7 +54,6 @@ class MembersController < ApplicationController
   end
 
   # DELETE /members/1
-  # DELETE /members/1.json
   def destroy
     @member.destroy
     respond_to do |format|

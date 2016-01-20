@@ -2,12 +2,13 @@
 
   <div class="field">
     <%= f.label :member_id %><br>
-
      <%= f.select :member_id, options_for_select(@members) %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.label :violation_description_id %><br>
+    <%= f.select :violation_description_id, options_for_select(@descriptions) %>
+
+
   </div>
   <div class="actions">
     <%= f.submit %>
