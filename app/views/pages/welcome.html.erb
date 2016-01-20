@@ -1,8 +1,17 @@
-<h1>Pages#welcome</h1>
-<p>Find me in app/views/pages/welcome.html.erb</p>
+<div id="welcome">
+  <div class="jumbotron">
+    <h1>Bank of Braavos</h1>
+    <h3>We play Clash of Clans.</p>
 
-<div class="jumbotron">
-  <h1>Welcome to Bank of Braavos</h1>
-  <p>We love Clash of Clans. We are an active, social, warring clan.</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn More</a></p>
+    <h3>We have great members.</h3>
+    <%= link_to "Members", members_path, class: "btn btn-primary btn-lg"  %>
+
+    <h3>We war on the regular.</h3>
+    <%= link_to "Wars", wars_path, class: "btn btn-primary btn-lg"  %>
+
+    <h3>We follow policy.</h3>
+    <%= link_to "Policy", pages_policy_path, class: "btn btn-primary btn-lg"  %>
+
+  </div>
 </div>
+
