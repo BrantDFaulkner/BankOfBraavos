@@ -1,13 +1,13 @@
 .member {
   span:first-child {
     font-weight: bold;
-    font-style: italic;
+    font-size: 1.25em
   }
   span:nth-child(2) {
     font-weight: bold;
+    font-style: italic;
   }
   .admin {
-    font-size: .75em;
     font-style: italic;
     color: red;
   }

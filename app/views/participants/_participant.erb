@@ -1,0 +1,10 @@
+
+<div class="member well well-sm">
+  <span><%= link_to participant.member.user_name, member_path(participant.member) %></span> |
+  <span><%= participant.member.rank.title %></span>
+
+
+  <% if user_signed_in? %>
+  <%= link_to 'remove from war', participant, class: "admin", method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</div>

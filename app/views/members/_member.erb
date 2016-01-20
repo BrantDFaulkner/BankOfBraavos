@@ -1,7 +1,8 @@
 <% members.each do |member| %>
 <div class="member well well-sm">
-  <span><%= member.rank.title %></span> |
-  <span><%= link_to member.user_name, member %></span>
+  <span><%= link_to member.user_name, member %></span> |
+  <span><%= member.rank.title %></span>
+
 
   <% if user_signed_in? %>
   <%= link_to 'Edit', edit_member_path(member), class: "admin" %>
