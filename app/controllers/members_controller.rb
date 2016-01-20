@@ -1,15 +1,12 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
-  # GET /members
-  # GET /members.json
   def index
-    @members = Member.all
+    @leaders = active_members_title_filter("Leader")
+    @co_leaders = active_members_title_filter("Co-Leader")
+    @elders = active_members_title_filter("Elder")
+    @members = active_members_title_filter("Member")
 
-    # @leaders =  Member.where("rank = 'leader'")
-    # @co_leaders = Member.where("rank = 'coleader'")
-    # @elders = Member.where("rank = 'elder'")
-    # @members = Member.where("rank = 'member'")
   end
 
   # GET /members/1

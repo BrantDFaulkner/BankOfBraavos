@@ -19,19 +19,3 @@
   padding-left: 10%;
   padding-right: 10%;
 }
-
-.member {
-  span:first-child {
-    font-weight: bold;
-    font-style: italic;
-  }
-  span:nth-child(2) {
-    font-weight: bold;
-  }
-  .admin {
-    font-size: .75em;
-    font-style: italic;
-    color: red;
-  }
-}
-

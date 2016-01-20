@@ -1,31 +1,24 @@
-<p id="notice"><%= notice %></p>
+<h1>Clan Members</h1>
 
-<h1>Listing Members</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User name</th>
-      <th>Rank</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @members.each do |member| %>
-      <tr>
-        <td><%= member.user_name %></td>
-        <td><%= member.rank %></td>
-        <td><%= member.status %></td>
-        <td><%= link_to 'Show', member %></td>
-        <td><%= link_to 'Edit', edit_member_path(member) %></td>
-        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<% if user_signed_in? %>
+<%= link_to 'Add Member', new_member_path, class: "btn btn-success" %>
 <br>
+<% end %>
 
-<%= link_to 'New Member', new_member_path %>
+<h3>Leader</h3>
+<%= render 'member', members: @leaders %>
+
+<h3>Co-Leaders</h3>
+<%= render 'member', members: @co_leaders %>
+
+<h3>Elders</h3>
+<%= render 'member', members: @elders %>
+
+<h3>Members</h3>
+<%= render 'member', members: @members %>
+
+
+
+
+
+
