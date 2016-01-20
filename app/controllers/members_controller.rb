@@ -20,6 +20,12 @@ class MembersController < ApplicationController
   # GET /members/new
   def new
     @member = Member.new
+    @ranks = Rank.all.map do |rank|
+      [rank.title, rank.id]
+    end
+    @statuses = Status.all.map do |status|
+      [status.description, status.id]
+    end
   end
 
   # GET /members/1/edit

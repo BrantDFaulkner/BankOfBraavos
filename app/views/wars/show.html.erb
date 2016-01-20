@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Opponent:</strong>
@@ -12,3 +11,57 @@
 
 <%= link_to 'Edit', edit_war_path(@war) %> |
 <%= link_to 'Back', wars_path %>
+
+<h1>Listing Participants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Member</th>
+      <th>War</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @participants.each do |participant| %>
+      <tr>
+        <td><%= participant.member %></td>
+        <td><%= participant.war %></td>
+        <td><%= link_to 'Show', participant %></td>
+        <td><%= link_to 'Edit', edit_participant_path(participant) %></td>
+        <td><%= link_to 'Destroy', participant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= form_for(@participant) do |f| %>
+  <% if @participant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@participant.errors.count, "error") %> prohibited this participant from being saved:</h2>
+
+      <ul>
+      <% @participant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :member_id %><br>
+    <%= f.select(:member_id, @members) %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :war_id, :value => @war.id%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'New Participant', new_participant_path %>

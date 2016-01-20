@@ -17,11 +17,11 @@
   </div>
   <div class="field">
     <%= f.label :rank_id %><br>
-    <%= f.text_field :rank_id %>
+    <%= f.select(:rank_id, @ranks, selected: 4) %>
   </div>
   <div class="field">
     <%= f.label :status_id %><br>
-    <%= f.text_field :status_id %>
+    <%= f.select(:status_id, @statuses, selected: 1) %>
   </div>
   <div class="actions">
     <%= f.submit %>
