@@ -16,6 +16,11 @@ class WarsController < ApplicationController
         [member.user_name, member.id] unless participant_ids.include?(member.id)
     end.compact
     @participant = Participant.new
+
+    @war_hero = WarHero.where()
+
+
+
   end
 
   # GET /wars/new
@@ -33,6 +38,8 @@ class WarsController < ApplicationController
     @war = War.new(war_params)
     @war.stars = 0
     @war.opponent_stars = 0
+
+    War
 
     respond_to do |format|
       if @war.save

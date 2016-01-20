@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20160119221426) do
     t.string   "opponent"
     t.integer  "stars"
     t.integer  "opponent_stars"
-    t.boolean  "tie_breaker"
+    t.string   "tie_breaker"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "war_hero_id"

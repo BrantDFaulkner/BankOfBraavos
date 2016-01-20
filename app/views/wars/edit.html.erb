@@ -1,6 +1,24 @@
-<h1>Editing War</h1>
+<h1 class="page-header">Edit: Bank of Bravos vs. <%=@war.opponent%></h1>
 
-<%= render 'form' %>
+<%= form_for(@war) do |f| %>
+  <div class="field">
+    Opposiing Clan: <%= f.text_field :opponent %>
+  </div>
 
-<%= link_to 'Show', @war %> |
-<%= link_to 'Back', wars_path %>
+  <div class="field">
+    Bank of Braavos Stars: <%= f.select :stars, Array(0..150) %>
+  </div>
+
+  <div class="field">
+    Opponent Stars: <%= f.select :opponent_stars, Array(0..150) %>
+  </div>
+
+  <div class="field">
+    Tie Breaker: <%= f.select :tie_breaker, ["TBD", "Win", "Lose"] %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save Edits", class: "btn btn-success" %>
+  </div>
+<% end %>
+

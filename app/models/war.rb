@@ -6,9 +6,9 @@ class War < ActiveRecord::Base
       "Win"
     elsif stars < opponent_stars
       "Loss"
-    elsif stars == opponent_stars && tie_breaker == true
+    elsif stars == opponent_stars && tie_breaker == "Win"
       "Win"
-    elsif stars == opponent_stars && tie_breaker == false
+    elsif stars == opponent_stars && tie_breaker == "Lose"
       "Loss"
     else
       "TBD"

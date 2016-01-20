@@ -1,8 +1,24 @@
 <div id="war_show">
 
-  <h1 class="page-header"><span>Bank of Bravos: </span><%= @war.stars %> vs. <span><%= @war.opponent %>: </span> <%= @war.opponent_stars %></h1>
-  <h3><span>Result: </span><%= @result %></h3>
+  <h1 class="page-header">
+    <span>Bank of Bravos: </span>
+    <%= @war.stars %> vs.
+    <span><%= @war.opponent %>: </span>
+    <%= @war.opponent_stars %>
+
+    <% if user_signed_in? %>
+     <%= link_to 'Edit War', edit_war_path(@war), class: "btn btn-warning" %>
+    <% end %>
+
+  </h1>
+
+  <h3><span>Result: </span><%= @war.result %></h3>
+  <h3><span>Tie Breaker: </span><%= @war.tie_breaker %></h3>
   <h3><span>Participants: </span><%= @participants.length %></h3>
+  <h3><span>War Hero: </span></h3>
+
+
+
 
 <% if user_signed_in? %>
   <%= form_for(@participant) do |f| %>
