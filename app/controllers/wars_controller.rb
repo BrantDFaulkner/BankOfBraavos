@@ -15,13 +15,6 @@ class WarsController < ApplicationController
     end
     @participants = @war.participants
     @participant = Participant.new
-    if @war.result
-      @result = "Win"
-    elsif @war.result == false
-      @result = "Loss"
-    else
-      @result = "TBD"
-    end
   end
 
   # GET /wars/new
@@ -37,6 +30,8 @@ class WarsController < ApplicationController
   # POST /wars.json
   def create
     @war = War.new(war_params)
+    @war.stars = 0
+    @war.opponent_stars = 0
 
     respond_to do |format|
       if @war.save

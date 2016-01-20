@@ -1,22 +1,25 @@
 <div id="war_show">
 
-<h3><span>Opponent: </span><%= @war.opponent %></h3>
-<h3><span>Result: </span><%= @result %></h3>
-<h3><span>Participants: </span><%= @participants.length %></h3>
+  <h1 class="page-header"><span>Bank of Bravos: </span><%= @war.stars %> vs. <span><%= @war.opponent %>: </span> <%= @war.opponent_stars %></h1>
+  <h3><span>Result: </span><%= @result %></h3>
+  <h3><span>Participants: </span><%= @participants.length %></h3>
 
-<%= form_for(@participant) do |f| %>
-  <div class="field">
-    <%= f.select(:member_id, @active_members) %>
-    <%= f.hidden_field :war_id, :value => @war.id%>
-  </div>
-  <div class="actions">
-    <%= f.submit "Add Participant", class: "btn btn-success"%>
-  </div>
+<% if user_signed_in? %>
+  <%= form_for(@participant) do |f| %>
+    <div class="field">
+      <%= f.select(:member_id, @active_members) %>
+      <%= f.hidden_field :war_id, :value => @war.id%>
+    </div>
+    <div class="actions">
+      <%= f.submit "Add Participant", class: "btn btn-success"%>
+    </div>
+  <% end %>
 <% end %>
 
-<% @participants.each do |participant| %>
-<%= render 'participants/participant', participant: participant %>
-<% end %>
+
+  <% @participants.each do |participant| %>
+  <%= render 'participants/participant', participant: participant %>
+  <% end %>
 
 </div>
 

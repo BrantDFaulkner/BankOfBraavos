@@ -103,9 +103,11 @@ ActiveRecord::Schema.define(version: 20160119221426) do
 
   create_table "wars", force: :cascade do |t|
     t.string   "opponent"
-    t.boolean  "result"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "stars"
+    t.integer  "opponent_stars"
+    t.boolean  "tie_breaker"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "war_hero_id"
     t.integer  "war_zero_id"
   end
