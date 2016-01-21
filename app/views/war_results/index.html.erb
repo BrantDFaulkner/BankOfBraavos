@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing War Results</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Result</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @war_results.each do |war_result| %>
+      <tr>
+        <td><%= war_result.result %></td>
+        <td><%= link_to 'Show', war_result %></td>
+        <td><%= link_to 'Edit', edit_war_result_path(war_result) %></td>
+        <td><%= link_to 'Destroy', war_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New War result', new_war_result_path %>

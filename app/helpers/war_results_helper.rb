@@ -1,0 +1,2 @@
+module WarResultsHelper
+end

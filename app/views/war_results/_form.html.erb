@@ -1,0 +1,21 @@
+<%= form_for(@war_result) do |f| %>
+  <% if @war_result.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@war_result.errors.count, "error") %> prohibited this war_result from being saved:</h2>
+
+      <ul>
+      <% @war_result.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :result %><br>
+    <%= f.text_field :result %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

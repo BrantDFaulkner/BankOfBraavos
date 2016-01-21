@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :war_results
   resources :war_zeros
   resources :war_heros
   get 'pages/welcome'
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :violations
   resources :violation_types
-  resources :participants
+  resources :participations
   resources :wars
   resources :members
   resources :statuses

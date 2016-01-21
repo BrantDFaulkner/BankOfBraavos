@@ -8,7 +8,7 @@ class WarsController < ApplicationController
   end
 
   def show
-    @participants = @war.participants
+    @participants = @war.members
     @war_heros = @war.war_heros
     @war_zeros = @war.war_zeros
 
@@ -21,7 +21,7 @@ class WarsController < ApplicationController
     end.compact
 
     @select_from_participants = @participants.map do |participant|
-      [participant.member.user_name, participant.id]
+      [participant.user_name, participant.id]
     end
 
     @participant = Participant.new

@@ -27,15 +27,15 @@ ActiveRecord::Schema.define(version: 20160120233104) do
   add_index "members", ["rank_id"], name: "index_members_on_rank_id", using: :btree
   add_index "members", ["status_id"], name: "index_members_on_status_id", using: :btree
 
-  create_table "participants", force: :cascade do |t|
+  create_table "participations", force: :cascade do |t|
     t.integer  "member_id"
     t.integer  "war_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "participants", ["member_id"], name: "index_participants_on_member_id", using: :btree
-  add_index "participants", ["war_id"], name: "index_participants_on_war_id", using: :btree
+  add_index "participations", ["member_id"], name: "index_participations_on_member_id", using: :btree
+  add_index "participations", ["war_id"], name: "index_participations_on_war_id", using: :btree
 
   create_table "ranks", force: :cascade do |t|
     t.string   "title"
@@ -75,53 +75,60 @@ ActiveRecord::Schema.define(version: 20160120233104) do
 
   create_table "violations", force: :cascade do |t|
     t.integer  "violation_type_id"
-    t.integer  "participant_id"
+    t.integer  "participation_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
 
-  add_index "violations", ["participant_id"], name: "index_violations_on_participant_id", using: :btree
+  add_index "violations", ["participation_id"], name: "index_violations_on_participation_id", using: :btree
   add_index "violations", ["violation_type_id"], name: "index_violations_on_violation_type_id", using: :btree
 
   create_table "war_heros", force: :cascade do |t|
     t.integer  "war_id"
-    t.integer  "participant_id"
+    t.integer  "participation_id"
     t.string   "reason"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
-  add_index "war_heros", ["participant_id"], name: "index_war_heros_on_participant_id", using: :btree
+  add_index "war_heros", ["participation_id"], name: "index_war_heros_on_participation_id", using: :btree
   add_index "war_heros", ["war_id"], name: "index_war_heros_on_war_id", using: :btree
+
+  create_table "war_results", force: :cascade do |t|
+    t.string   "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "war_zeros", force: :cascade do |t|
     t.integer  "war_id"
-    t.integer  "participant_id"
+    t.integer  "participation_id"
     t.string   "reason"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
-  add_index "war_zeros", ["participant_id"], name: "index_war_zeros_on_participant_id", using: :btree
+  add_index "war_zeros", ["participation_id"], name: "index_war_zeros_on_participation_id", using: :btree
   add_index "war_zeros", ["war_id"], name: "index_war_zeros_on_war_id", using: :btree
 
   create_table "wars", force: :cascade do |t|
+    t.integer  "war_result_id"
     t.string   "opponent"
     t.integer  "stars"
-    t.integer  "opponent_stars"
-    t.string   "tie_breaker"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.float    "destruction"
+    t.integer  "opp_stars"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_foreign_key "members", "ranks"
   add_foreign_key "members", "statuses"
-  add_foreign_key "participants", "members"
-  add_foreign_key "participants", "wars"
-  add_foreign_key "violations", "participants"
+  add_foreign_key "participations", "members"
+  add_foreign_key "participations", "wars"
+  add_foreign_key "violations", "participations"
   add_foreign_key "violations", "violation_types"
-  add_foreign_key "war_heros", "participants"
+  add_foreign_key "war_heros", "participations"
   add_foreign_key "war_heros", "wars"
-  add_foreign_key "war_zeros", "participants"
+  add_foreign_key "war_zeros", "participations"
   add_foreign_key "war_zeros", "wars"
 end

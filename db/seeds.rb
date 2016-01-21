@@ -6,9 +6,33 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-ranks = ["Leader", "Co-Leader", "Elder", "Member"]
+ranks = [
+  "Leader",
+  "Co-Leader",
+  "Elder",
+  "Member"
+]
 
-statuses = ["Active", "Inactive", "TempKicked", "Banned"]
+statuses = [
+  "Active",
+  "Inactive",
+  "TempKicked",
+  "Banned"
+]
+
+war_results = [
+  "TBD",
+  "Win",
+  "Loss",
+  "Draw"
+]
+
+violation_types = [
+  "Zero war attacks.",
+  "Only one war attack.",
+  "Attacked severely inappropriate enemy base.",
+  "Attacked with severely inappropriate army composition."
+]
 
 members = [
   ["Blunderbuss",1,1],
@@ -58,12 +82,8 @@ members = [
   ["Tyler",4,1]
 ]
 
-violation_types = [
-  "Zero war attacks.",
-  "Only one war attack.",
-  "Attacked severely inappropriate enemy base.",
-  "Attacked with severely inappropriate army composition."
-]
+
+
 
 
 ranks.each do |title|
@@ -72,6 +92,10 @@ end
 
 statuses.each do |description|
   Status.create!(description: description)
+end
+
+war_results.each do |result|
+  WarResult.create!(result: result)
 end
 
 members.each do |member|

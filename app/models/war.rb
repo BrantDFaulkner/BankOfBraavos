@@ -1,7 +1,9 @@
 class War < ActiveRecord::Base
-  has_many :participants
-  has_many :war_heros
-  has_many :war_zeros
+  # has_many :participations
+  # has_many :members, through: :participations, foreign_key: :member_id
+
+  # has_many :war_heros
+  # has_many :war_zeros
 
   def result
     if stars > opponent_stars

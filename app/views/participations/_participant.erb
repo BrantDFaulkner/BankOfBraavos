@@ -1,7 +1,7 @@
 
 <div class="member well well-sm">
-  <span><%= link_to participant.member.user_name, member_path(participant.member) %></span> |
-  <span><%= participant.member.rank.title %></span>
+  <span><%= link_to participant.user_name, member_path(participant) %></span> |
+  <span><%= participant.rank.title %></span>
 
 
   <% if user_signed_in? %>
