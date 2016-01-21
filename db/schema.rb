@@ -117,8 +117,9 @@ ActiveRecord::Schema.define(version: 20160120233104) do
     t.integer  "stars"
     t.float    "destruction"
     t.integer  "opp_stars"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.float    "opp_destruction"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_foreign_key "members", "ranks"

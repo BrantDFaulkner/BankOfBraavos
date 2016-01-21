@@ -7,7 +7,7 @@ class CreateWars < ActiveRecord::Migration
       t.integer :stars
       t.float :destruction
       t.integer :opp_stars
-      t.float :destruction
+      t.float :opp_destruction
 
       t.timestamps null: false
     end

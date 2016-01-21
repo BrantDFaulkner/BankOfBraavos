@@ -1,32 +1,30 @@
 class WarsController < ApplicationController
   before_action :set_war, only: [:show, :edit, :update, :destroy]
 
-  # GET /wars
-  # GET /wars.json
   def index
     @wars = War.all
   end
 
   def show
-    @participants = @war.members
-    @war_heros = @war.war_heros
-    @war_zeros = @war.war_zeros
+    # @participants = @war.members
+    # @war_heros = @war.war_heros
+    # @war_zeros = @war.war_zeros
 
-    participant_ids = @participants.map do |participant|
-      participant.member.id
-    end
+    # participant_ids = @participants.map do |participant|
+    #   participant.member.id
+    # end
 
-    @select_from_members = active_members.map do |member|
-        [member.user_name, member.id] unless participant_ids.include?(member.id)
-    end.compact
+    # @select_from_members = active_members.map do |member|
+    #     [member.user_name, member.id] unless participant_ids.include?(member.id)
+    # end.compact
 
-    @select_from_participants = @participants.map do |participant|
-      [participant.user_name, participant.id]
-    end
+    # @select_from_participants = @participants.map do |participant|
+    #   [participant.user_name, participant.id]
+    # end
 
-    @participant = Participant.new
-    @war_hero = WarHero.new
-    @war_zero = WarZero.new
+    # @participant = Participant.new
+    # @war_hero = WarHero.new
+    # @war_zero = WarZero.new
 
 
   end
@@ -40,37 +38,21 @@ class WarsController < ApplicationController
   def edit
   end
 
-  # POST /wars
-  # POST /wars.json
   def create
     @war = War.new(war_params)
-    @war.stars = 0
-    @war.opponent_stars = 0
-
-    War
-
-    respond_to do |format|
-      if @war.save
-        format.html { redirect_to @war, notice: 'War was successfully created.' }
-        format.json { render :show, status: :created, location: @war }
-      else
-        format.html { render :new }
-        format.json { render json: @war.errors, status: :unprocessable_entity }
-      end
+    @war.initialize_properties
+    if @war.save
+      redirect_to wars_path, notice: "War vs. #{@war.opponent} created."
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /wars/1
-  # PATCH/PUT /wars/1.json
   def update
-    respond_to do |format|
-      if @war.update(war_params)
-        format.html { redirect_to @war, notice: 'War was successfully updated.' }
-        format.json { render :show, status: :ok, location: @war }
-      else
-        format.html { render :edit }
-        format.json { render json: @war.errors, status: :unprocessable_entity }
-      end
+    if @war.save
+      redirect_to @war, notice: 'War was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -92,6 +74,6 @@ class WarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def war_params
-      params.require(:war).permit(:opponent, :stars, :opponent_stars, :tie_breaker)
+      params.require(:war).permit(:opponent, :stars, :destruction, :opp_stars, :opp_destruction)
     end
 end

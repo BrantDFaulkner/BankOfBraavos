@@ -2,7 +2,7 @@
 
 <%= form_for(@war) do |f| %>
   <div class="field">
-    Opposiing Clan: <%= f.text_field :opponent %>
+    Opponent: <%= f.text_field :opponent %>
   </div>
 
   <div class="field">
@@ -10,11 +10,15 @@
   </div>
 
   <div class="field">
-    Opponent Stars: <%= f.select :opponent_stars, Array(0..150) %>
+    Bank of Braavos Destruction %: <%= f.number_field :destruction, :step => 0.01 %>
   </div>
 
   <div class="field">
-    Tie Breaker: <%= f.select :tie_breaker, ["TBD", "Win", "Lose"] %>
+    Opponent Stars: <%= f.select :opp_stars, Array(0..150) %>
+  </div>
+
+  <div class="field">
+    Opponent Destruction %: <%= f.number_field :opp_destruction, :step => 0.01 %>
   </div>
 
   <div class="actions">
