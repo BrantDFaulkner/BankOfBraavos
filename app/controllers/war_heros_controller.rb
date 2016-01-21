@@ -21,19 +21,12 @@ class WarHerosController < ApplicationController
   def edit
   end
 
-  # POST /war_heros
-  # POST /war_heros.json
   def create
     @war_hero = WarHero.new(war_hero_params)
-
-    respond_to do |format|
-      if @war_hero.save
-        format.html { redirect_to @war_hero, notice: 'War hero was successfully created.' }
-        format.json { render :show, status: :created, location: @war_hero }
-      else
-        format.html { render :new }
-        format.json { render json: @war_hero.errors, status: :unprocessable_entity }
-      end
+    if @war_hero.save
+      redirect_to :back, notice: "#{@war_hero.participant.member.user_name} was declared a War Hero."
+    else
+      render :new
     end
   end
 
@@ -55,10 +48,7 @@ class WarHerosController < ApplicationController
   # DELETE /war_heros/1.json
   def destroy
     @war_hero.destroy
-    respond_to do |format|
-      format.html { redirect_to war_heros_url, notice: 'War hero was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to :back, notice: 'War Hero was successfully destroyed.'
   end
 
   private
@@ -69,6 +59,6 @@ class WarHerosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def war_hero_params
-      params.require(:war_hero).permit(:participant_id, :description)
+      params.require(:war_hero).permit(:war_id, :participant_id, :reason)
     end
 end

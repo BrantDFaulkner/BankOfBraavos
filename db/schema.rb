@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160119221426) do
+ActiveRecord::Schema.define(version: 20160120233104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,22 +84,26 @@ ActiveRecord::Schema.define(version: 20160119221426) do
   add_index "violations", ["violation_type_id"], name: "index_violations_on_violation_type_id", using: :btree
 
   create_table "war_heros", force: :cascade do |t|
+    t.integer  "war_id"
     t.integer  "participant_id"
-    t.string   "description"
+    t.string   "reason"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
   add_index "war_heros", ["participant_id"], name: "index_war_heros_on_participant_id", using: :btree
+  add_index "war_heros", ["war_id"], name: "index_war_heros_on_war_id", using: :btree
 
   create_table "war_zeros", force: :cascade do |t|
+    t.integer  "war_id"
     t.integer  "participant_id"
-    t.string   "description"
+    t.string   "reason"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
   add_index "war_zeros", ["participant_id"], name: "index_war_zeros_on_participant_id", using: :btree
+  add_index "war_zeros", ["war_id"], name: "index_war_zeros_on_war_id", using: :btree
 
   create_table "wars", force: :cascade do |t|
     t.string   "opponent"
@@ -108,12 +112,7 @@ ActiveRecord::Schema.define(version: 20160119221426) do
     t.string   "tie_breaker"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.integer  "war_hero_id"
-    t.integer  "war_zero_id"
   end
-
-  add_index "wars", ["war_hero_id"], name: "index_wars_on_war_hero_id", using: :btree
-  add_index "wars", ["war_zero_id"], name: "index_wars_on_war_zero_id", using: :btree
 
   add_foreign_key "members", "ranks"
   add_foreign_key "members", "statuses"
@@ -122,7 +121,7 @@ ActiveRecord::Schema.define(version: 20160119221426) do
   add_foreign_key "violations", "participants"
   add_foreign_key "violations", "violation_types"
   add_foreign_key "war_heros", "participants"
+  add_foreign_key "war_heros", "wars"
   add_foreign_key "war_zeros", "participants"
-  add_foreign_key "wars", "war_heros"
-  add_foreign_key "wars", "war_zeros"
+  add_foreign_key "war_zeros", "wars"
 end

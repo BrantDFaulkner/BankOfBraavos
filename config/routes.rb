@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
+  resources :war_zeros
+  resources :war_heros
   get 'pages/welcome'
 
   get 'pages/policy'
 
   get 'welcome/policy'
 
-  resources :war_zeros
-  resources :war_heros
   resources :violations
   resources :violation_types
   resources :participants

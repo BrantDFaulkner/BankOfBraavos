@@ -4,12 +4,14 @@ RSpec.describe "war_zeros/index", type: :view do
   before(:each) do
     assign(:war_zeros, [
       WarZero.create!(
+        :war => nil,
         :participant => nil,
-        :description => "Description"
+        :reason => "Reason"
       ),
       WarZero.create!(
+        :war => nil,
         :participant => nil,
-        :description => "Description"
+        :reason => "Reason"
       )
     ])
   end
@@ -17,6 +19,7 @@ RSpec.describe "war_zeros/index", type: :view do
   it "renders a list of war_zeros" do
     render
     assert_select "tr>td", :text => nil.to_s, :count => 2
-    assert_select "tr>td", :text => "Description".to_s, :count => 2
+    assert_select "tr>td", :text => nil.to_s, :count => 2
+    assert_select "tr>td", :text => "Reason".to_s, :count => 2
   end
 end

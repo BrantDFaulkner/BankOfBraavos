@@ -25,15 +25,10 @@ class WarZerosController < ApplicationController
   # POST /war_zeros.json
   def create
     @war_zero = WarZero.new(war_zero_params)
-
-    respond_to do |format|
-      if @war_zero.save
-        format.html { redirect_to @war_zero, notice: 'War zero was successfully created.' }
-        format.json { render :show, status: :created, location: @war_zero }
-      else
-        format.html { render :new }
-        format.json { render json: @war_zero.errors, status: :unprocessable_entity }
-      end
+    if @war_zero.save
+      redirect_to :back, notice: "#{@war_zero.participant.member.user_name} was declared a War Zero."
+    else
+      render :new
     end
   end
 
@@ -55,10 +50,7 @@ class WarZerosController < ApplicationController
   # DELETE /war_zeros/1.json
   def destroy
     @war_zero.destroy
-    respond_to do |format|
-      format.html { redirect_to war_zeros_url, notice: 'War zero was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to :back, notice: 'War Zero was successfully destroyed.'
   end
 
   private
@@ -69,6 +61,6 @@ class WarZerosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def war_zero_params
-      params.require(:war_zero).permit(:participant_id, :description)
+      params.require(:war_zero).permit(:war_id, :participant_id, :reason)
     end
 end

@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>War:</strong>
+  <%= @war_hero.war %>
+</p>
+
+<p>
   <strong>Participant:</strong>
   <%= @war_hero.participant %>
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @war_hero.description %>
+  <strong>Reason:</strong>
+  <%= @war_hero.reason %>
 </p>
 
 <%= link_to 'Edit', edit_war_hero_path(@war_hero) %> |

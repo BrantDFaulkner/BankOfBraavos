@@ -1,0 +1,9 @@
+<div class="member alert alert-success">
+  <span><%= link_to war_hero.participant.member.user_name, member_path(war_hero.participant.member) %></span> |
+  <span><%= war_hero.participant.member.rank.title %></span> |
+  <%= war_hero.reason %>
+
+  <% if user_signed_in? %>
+  <%= link_to 'delete', war_hero, class: "admin", method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</div>

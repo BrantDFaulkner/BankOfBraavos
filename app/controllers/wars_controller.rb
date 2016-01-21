@@ -9,16 +9,24 @@ class WarsController < ApplicationController
 
   def show
     @participants = @war.participants
+    @war_heros = @war.war_heros
+    @war_zeros = @war.war_zeros
+
     participant_ids = @participants.map do |participant|
       participant.member.id
     end
-    @available_members = active_members.map do |member|
+
+    @select_from_members = active_members.map do |member|
         [member.user_name, member.id] unless participant_ids.include?(member.id)
     end.compact
+
+    @select_from_participants = @participants.map do |participant|
+      [participant.member.user_name, participant.id]
+    end
+
     @participant = Participant.new
-
-    @war_hero = WarHero.where()
-
+    @war_hero = WarHero.new
+    @war_zero = WarZero.new
 
 
   end
