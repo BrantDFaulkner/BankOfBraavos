@@ -63,10 +63,26 @@
 <!-- VIOLATIONS -->
   <h3><span>Violations: </span></h3>
 
+<!-- ADD VIOLATION-->
+  <% if user_signed_in? %>
+    <%= form_for(@violation) do |f| %>
+      <div class="field">
+        <%= f.select(:participation_id, @select_violator) %>
+      </div>
+      <div class="field">
+        <%= f.select(:violation_type_id, @select_violation_type) %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Add Violation", class: "btn btn-danger" %>
+      </div>
+    <% end %>
+  <% end %>
+
 <!-- SHOW VIOLATIONS -->
   <% @violations.each do |violation| %>
-    <%= render 'violations/violation', violation: violation %>
+    <%= render 'violations/war_violation', violation: violation %>
   <% end %>
+
 
 
 

@@ -12,9 +12,6 @@ class WarsController < ApplicationController
     @violations = @war.violations
     @participants = @war.participants
 
-    # participant_ids = @participants.map do |participant|
-    #   participant.member.id
-    # end
 
 
     @participation = Participation.new
@@ -30,6 +27,14 @@ class WarsController < ApplicationController
     @war_zero = WarZero.new
     @select_war_zero = @participations.map do |participation|
       [participation.user_name, participation.id]
+    end
+
+    @violation = Violation.new
+    @select_violator = @participations.map do |participation|
+      [participation.user_name, participation.id]
+    end
+    @select_violation_type = ViolationType.all.map do |type|
+      [type.description, type.id]
     end
 
 

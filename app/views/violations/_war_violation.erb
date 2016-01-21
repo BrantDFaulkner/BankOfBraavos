@@ -1,0 +1,9 @@
+<div class="member alert alert-danger">
+  <span><%= link_to violation.user_name, member_path(violation.member) %></span> |
+  <span><%= violation.title %></span> |
+  <%= violation.description %>
+
+  <% if user_signed_in? %>
+  <%= link_to 'delete', violation, class: "admin", method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</div>
