@@ -16,16 +16,22 @@ ActiveRecord::Schema.define(version: 20160120233104) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "members", force: :cascade do |t|
-    t.string   "user_name"
-    t.integer  "rank_id"
-    t.integer  "status_id"
+  create_table "activity_statuses", force: :cascade do |t|
+    t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "members", force: :cascade do |t|
+    t.string   "user_name"
+    t.integer  "rank_id"
+    t.integer  "activity_status_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "members", ["activity_status_id"], name: "index_members_on_activity_status_id", using: :btree
   add_index "members", ["rank_id"], name: "index_members_on_rank_id", using: :btree
-  add_index "members", ["status_id"], name: "index_members_on_status_id", using: :btree
 
   create_table "participations", force: :cascade do |t|
     t.integer  "member_id"
@@ -41,12 +47,6 @@ ActiveRecord::Schema.define(version: 20160120233104) do
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "statuses", force: :cascade do |t|
-    t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,7 +84,6 @@ ActiveRecord::Schema.define(version: 20160120233104) do
   add_index "violations", ["violation_type_id"], name: "index_violations_on_violation_type_id", using: :btree
 
   create_table "war_heros", force: :cascade do |t|
-    t.integer  "war_id"
     t.integer  "participation_id"
     t.string   "reason"
     t.datetime "created_at",       null: false
@@ -92,7 +91,6 @@ ActiveRecord::Schema.define(version: 20160120233104) do
   end
 
   add_index "war_heros", ["participation_id"], name: "index_war_heros_on_participation_id", using: :btree
-  add_index "war_heros", ["war_id"], name: "index_war_heros_on_war_id", using: :btree
 
   create_table "war_results", force: :cascade do |t|
     t.string   "result"
@@ -101,7 +99,6 @@ ActiveRecord::Schema.define(version: 20160120233104) do
   end
 
   create_table "war_zeros", force: :cascade do |t|
-    t.integer  "war_id"
     t.integer  "participation_id"
     t.string   "reason"
     t.datetime "created_at",       null: false
@@ -109,7 +106,6 @@ ActiveRecord::Schema.define(version: 20160120233104) do
   end
 
   add_index "war_zeros", ["participation_id"], name: "index_war_zeros_on_participation_id", using: :btree
-  add_index "war_zeros", ["war_id"], name: "index_war_zeros_on_war_id", using: :btree
 
   create_table "wars", force: :cascade do |t|
     t.integer  "war_result_id"
@@ -122,14 +118,12 @@ ActiveRecord::Schema.define(version: 20160120233104) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "members", "activity_statuses"
   add_foreign_key "members", "ranks"
-  add_foreign_key "members", "statuses"
   add_foreign_key "participations", "members"
   add_foreign_key "participations", "wars"
   add_foreign_key "violations", "participations"
   add_foreign_key "violations", "violation_types"
   add_foreign_key "war_heros", "participations"
-  add_foreign_key "war_heros", "wars"
   add_foreign_key "war_zeros", "participations"
-  add_foreign_key "war_zeros", "wars"
 end

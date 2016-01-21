@@ -12,7 +12,70 @@
   </h1>
 
 <!-- WAR RESULT -->
-<h3><span>Result: </span><%= @war.result %></h3>
+  <h3><span>Result: </span><%= @war.result %></h3>
+
+<!-- WAR HERO -->
+  <h3><span>War Hero: </span></h3>
+
+<!-- ADD WAR HERO -->
+  <% if user_signed_in? %>
+    <%= form_for(@war_hero) do |f| %>
+      <div class="field">
+        <%= f.select(:participation_id, @select_war_hero) %>
+      </div>
+      <div class="field">
+        Reason: <%= f.text_field :reason %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Add War Hero", class: "btn btn-success" %>
+      </div>
+    <% end %>
+  <% end %>
+
+<!-- SHOW WAR HERO -->
+  <% @war_heros.each do |war_hero| %>
+    <%= render 'war_heros/war_hero', war_hero: war_hero %>
+  <% end %>
+
+<!-- WAR ZERO -->
+  <h3><span>War zero: </span></h3>
+
+<!-- ADD WAR ZERO -->
+  <% if user_signed_in? %>
+    <%= form_for(@war_zero) do |f| %>
+      <div class="field">
+        <%= f.select(:participation_id, @select_war_zero) %>
+      </div>
+      <div class="field">
+        Reason: <%= f.text_field :reason %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Add War Zero", class: "btn btn-danger" %>
+      </div>
+    <% end %>
+  <% end %>
+
+<!-- SHOW WAR zero -->
+  <% @war_zeros.each do |war_zero| %>
+    <%= render 'war_zeros/war_zero', war_zero: war_zero %>
+  <% end %>
+
+<!-- VIOLATIONS -->
+  <h3><span>Violations: </span></h3>
+
+<!-- SHOW VIOLATIONS -->
+  <% @violations.each do |violation| %>
+    <%= render 'violations/violation', violation: violation %>
+  <% end %>
+
+
+
+
+
+
+
+
+
 
 <!-- Participants -->
   <h3><span>Participants: </span><%= @participants.length %></h3>
@@ -33,9 +96,11 @@
   <% end %>
 
 <!-- Show participants -->
-  <%# @participants.each do |participant| %>
-    <%#= render 'participants/participant', participant: participant %>
-  <%# end %>
+  <% @participants.each do |participant| %>
+    <%= render 'participations/participant', participant: participant %>
+  <% end %>
+
+
 
 
 

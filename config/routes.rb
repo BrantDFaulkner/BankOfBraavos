@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :activity_statuses
   resources :war_results
   resources :war_zeros
   resources :war_heros
@@ -13,7 +14,6 @@ Rails.application.routes.draw do
   resources :participations
   resources :wars
   resources :members
-  resources :statuses
   resources :ranks
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,6 +1,11 @@
 class Member < ActiveRecord::Base
-  # belongs_to :rank
-  # belongs_to :status
+  belongs_to :rank
+  delegate :title, to: :rank
+
+  belongs_to :activity_status
+  delegate :status, to: :activity_status
+
+
 
   # has_many :participations
   # has_many :wars, through: :participations

@@ -1,6 +1,6 @@
 <div class="member alert alert-success">
-  <span><%= link_to war_hero.participant.member.user_name, member_path(war_hero.participant.member) %></span> |
-  <span><%= war_hero.participant.member.rank.title %></span> |
+  <span><%= link_to war_hero.user_name, member_path(war_hero.member) %></span> |
+  <span><%= war_hero.title %></span> |
   <%= war_hero.reason %>
 
   <% if user_signed_in? %>

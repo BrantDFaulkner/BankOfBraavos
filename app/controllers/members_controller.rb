@@ -2,10 +2,17 @@ class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   def index
-    @leaders = active_members_title_filter("Leader")
-    @co_leaders = active_members_title_filter("Co-Leader")
-    @elders = active_members_title_filter("Elder")
-    @members = active_members_title_filter("Member")
+    @leaders = []
+    @co_leaders = []
+    @elders = []
+    @members = []
+
+    active_members.each do |member|
+      @leaders << member if member.title == "Leader"
+      @co_leaders << member if member.title == "Co-Leader"
+      @elders << member if member.title == "Elder"
+      @members << member if member.title == "Member"
+    end
 
   end
 

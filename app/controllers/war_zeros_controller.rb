@@ -26,7 +26,7 @@ class WarZerosController < ApplicationController
   def create
     @war_zero = WarZero.new(war_zero_params)
     if @war_zero.save
-      redirect_to :back, notice: "#{@war_zero.participant.member.user_name} was declared a War Zero."
+      redirect_to :back, notice: "You declared a War Zero."
     else
       render :new
     end
@@ -61,6 +61,6 @@ class WarZerosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def war_zero_params
-      params.require(:war_zero).permit(:war_id, :participant_id, :reason)
+      params.require(:war_zero).permit(:participation_id, :reason)
     end
 end

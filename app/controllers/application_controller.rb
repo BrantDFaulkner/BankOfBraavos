@@ -4,14 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def active_members
-    @active_members ||= Member.where("status_id = 1").order('LOWER(user_name)')
+    @active_members ||= Member.where("activity_status_id = 1").order('LOWER(user_name)')
   end
-
-  def active_members_title_filter(title)
-    active_members.map do |member|
-      member if member.rank.title == title
-    end.compact
-  end
-
 
 end

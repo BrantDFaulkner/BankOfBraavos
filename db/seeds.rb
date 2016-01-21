@@ -13,7 +13,7 @@ ranks = [
   "Member"
 ]
 
-statuses = [
+activity_statuses = [
   "Active",
   "Inactive",
   "TempKicked",
@@ -90,8 +90,8 @@ ranks.each do |title|
   Rank.create!(title: title)
 end
 
-statuses.each do |description|
-  Status.create!(description: description)
+activity_statuses.each do |status|
+  ActivityStatus.create!(status: status)
 end
 
 war_results.each do |result|
@@ -102,7 +102,7 @@ members.each do |member|
   Member.create!(
     user_name: member[0],
     rank_id: member[1],
-    status_id: member[2]
+    activity_status_id: member[2]
     )
 end
 

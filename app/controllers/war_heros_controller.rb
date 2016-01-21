@@ -24,7 +24,7 @@ class WarHerosController < ApplicationController
   def create
     @war_hero = WarHero.new(war_hero_params)
     if @war_hero.save
-      redirect_to :back, notice: "#{@war_hero.participant.member.user_name} was declared a War Hero."
+      redirect_to :back, notice: "You declared a War Hero."
     else
       render :new
     end
@@ -59,6 +59,6 @@ class WarHerosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def war_hero_params
-      params.require(:war_hero).permit(:war_id, :participant_id, :reason)
+      params.require(:war_hero).permit(:participation_id, :reason)
     end
 end
