@@ -6,5 +6,6 @@ class Violation < ActiveRecord::Base
   has_one :member, through: :participation
   delegate :user_name, to: :member
   delegate :title, to: :member
+  has_one :war, through: :participation
 
 end

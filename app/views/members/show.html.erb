@@ -1,19 +1,18 @@
-<p id="notice"><%= notice %></p>
+<h1 class="page-header"><%= @member.user_name %>'s Profile</h1>
 
-<p>
-  <strong>User name:</strong>
-  <%= @member.user_name %>
-</p>
+<h3><span>Rank: </span><%= @member.title %></h3>
 
-<p>
-  <strong>Rank:</strong>
-  <%= @member.rank %>
-</p>
+<h3><span>Awarded: War Hero: </span></h3>
+<% @hero_wars.each do |war|%>
+  <%= render 'wars/scoreboard', war: war %>
+<% end %>
 
-<p>
-  <strong>Status:</strong>
-  <%= @member.status %>
-</p>
+<h3><span>Declared War Zero: </span></h3>
+<% @zero_wars.each do |war|%>
+  <%= render 'wars/scoreboard', war: war %>
+<% end %>
 
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
+<h3><span>Received Violation: </span></h3>
+<% @violation_wars.each do |war|%>
+  <%= render 'wars/scoreboard', war: war %>
+<% end %>

@@ -5,16 +5,12 @@
 <!-- Add War Button -->
 <% if user_signed_in? %>
   <%= link_to 'Add War', new_war_path, class: "btn btn-success" %>
+  <br><br>
 <% end %>
 
 <!-- List Wars -->
 <% @wars.each do |war| %>
-  <div>
-    <%= war.opponent %>
-    <%= link_to 'Show', war %>
-    <%= link_to 'Edit', edit_war_path(war) %>
-    <%= link_to 'Destroy', war, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </div>
+    <%= render 'scoreboard', war: war %>
 <% end %>
 
 

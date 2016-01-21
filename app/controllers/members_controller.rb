@@ -16,9 +16,22 @@ class MembersController < ApplicationController
 
   end
 
-  # GET /members/1
-  # GET /members/1.json
   def show
+    @hero_wars = @member.war_heros.map do |award|
+      award.war
+    end
+
+    @zero_wars = @member.war_zeros.map do |award|
+      award.war
+    end
+
+    @violation_wars = @member.violations.map do |violation|
+      violation.war
+    end
+
+
+
+
   end
 
   # GET /members/new

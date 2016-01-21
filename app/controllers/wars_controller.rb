@@ -12,8 +12,6 @@ class WarsController < ApplicationController
     @violations = @war.violations
     @participants = @war.participants
 
-
-
     @participation = Participation.new
     @select_participant = (active_members - @participants).map do |participant|
       [participant.user_name, participant.id]
@@ -36,9 +34,7 @@ class WarsController < ApplicationController
     @select_violation_type = ViolationType.all.map do |type|
       [type.description, type.id]
     end
-
-
-  end
+  end#show
 
   # GET /wars/new
   def new
@@ -60,6 +56,8 @@ class WarsController < ApplicationController
   end
 
   def update
+    @war.assign_attributes(war_params)
+    @war.assign_war_result_id
     if @war.save
       redirect_to @war, notice: 'War was successfully updated.'
     else
