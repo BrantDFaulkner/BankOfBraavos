@@ -1,8 +1,15 @@
 class War < ActiveRecord::Base
   belongs_to :war_result
-
   delegate :result, to: :war_result
-  # has_many :participations
+
+  has_many :participations
+  # has_many :members, through: :participations
+  has_many :participants, through: :participations, source: :member
+  # has_many :war_heros, through: :participations
+  # has_many :war_zeros, through: :participations
+
+
+
   # has_many :members, through: :participations, foreign_key: :member_id
 
   # has_many :war_heros

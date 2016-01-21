@@ -22,9 +22,10 @@ class ParticipationsController < ApplicationController
   end
 
   def create
+    p params
     @participation = Participation.new(participation_params)
     if @participation.save
-      redirect_to :back, notice: "#{@participation.member.user_name} was added to the war."
+      redirect_to :back, notice: "Participant was added to the war."
     else
       render :new
     end
@@ -61,7 +62,7 @@ class ParticipationsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def participant_params
-      params.require(:participant).permit(:member_id, :war_id)
+    def participation_params
+      params.require(:participation).permit(:member_id, :war_id)
     end
 end

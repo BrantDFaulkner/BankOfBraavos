@@ -6,6 +6,7 @@ class WarsController < ApplicationController
   end
 
   def show
+    # @participations = @war.participations
     # @participants = @war.members
     # @war_heros = @war.war_heros
     # @war_zeros = @war.war_zeros
@@ -13,16 +14,19 @@ class WarsController < ApplicationController
     # participant_ids = @participants.map do |participant|
     #   participant.member.id
     # end
+    @participants = @war.participants
 
-    # @select_from_members = active_members.map do |member|
-    #     [member.user_name, member.id] unless participant_ids.include?(member.id)
-    # end.compact
+    @select_participant = (active_members - @participants).map do |participant|
+      [participant.user_name, participant.id]
+    end
+
 
     # @select_from_participants = @participants.map do |participant|
-    #   [participant.user_name, participant.id]
+    #
     # end
 
-    # @participant = Participant.new
+    @participation = Participation.new
+
     # @war_hero = WarHero.new
     # @war_zero = WarZero.new
 

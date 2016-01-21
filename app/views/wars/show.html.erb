@@ -14,6 +14,29 @@
 <!-- WAR RESULT -->
 <h3><span>Result: </span><%= @war.result %></h3>
 
+<!-- Participants -->
+  <h3><span>Participants: </span><%= @participants.length %></h3>
+
+<!-- Add Participants -->
+  <% if user_signed_in? %>
+
+    <%= form_for(@participation) do |f| %>
+      <%= f.hidden_field :war_id, :value => @war.id %>
+      <div class="field">
+        <%= f.select(:member_id, @select_participant) %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Add Participant", class: "btn btn-success"%>
+      </div>
+    <% end %>
+  <% end %>
+
+<!-- Show participants -->
+  <%# @participants.each do |participant| %>
+    <%#= render 'participants/participant', participant: participant %>
+  <%# end %>
+
 
 
 

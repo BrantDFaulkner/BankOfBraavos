@@ -1,20 +1,11 @@
 
-
-
-
-
-  <h3><span>Tie Breaker: </span><%= @war.tie_breaker %></h3>
-
-
 <!-- WAR HERO -->
-  <h3><span>War Hero: </span></h3>
+  <h3><span>War Hero</span></h3>
 <!-- ADD WAR HERO -->
   <% if user_signed_in? %>
     <%= form_for(@war_hero) do |f| %>
-      <%= f.hidden_field :war_id, :value => @war.id %>
-
       <div class="field">
-        <%= f.select(:participant_id, @select_from_participants) %>
+        <%= f.select(@select_from_participations) %>
       </div>
       <div class="field">
         Reason: <%= f.text_field :reason %>
@@ -28,6 +19,9 @@
   <% @war_heros.each do |war_hero| %>
     <%= render 'war_heros/war_hero', war_hero: war_hero %>
   <% end %>
+
+
+
 
 <!-- WAR zero -->
   <h3><span>War zero: </span></h3>
@@ -54,26 +48,7 @@
 
 
 
-<!-- Participants -->
-  <h3><span>Participants: </span><%= @participants.length %></h3>
 
-<!-- Add Participants -->
-  <% if user_signed_in? %>
-    <%= form_for(@participant) do |f| %>
-      <div class="field">
-        <%= f.select(:member_id, @select_from_members) %>
-        <%= f.hidden_field :war_id, :value => @war.id%>
-      </div>
-      <div class="actions">
-        <%= f.submit "Add Participant", class: "btn btn-success"%>
-      </div>
-    <% end %>
-  <% end %>
-
-<!-- Show participants -->
-  <% @participants.each do |participant| %>
-    <%= render 'participants/participant', participant: participant %>
-  <% end %>
 
 
 
