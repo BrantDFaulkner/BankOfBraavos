@@ -34,6 +34,12 @@ gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#Heroku Adds
+gem 'rails_12factor', group: :production
+
+ruby "2.2.1"
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

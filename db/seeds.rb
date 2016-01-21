@@ -110,7 +110,7 @@ violation_types.each do |type|
   ViolationType.create!(description: type)
 end
 
-User.create!(email: "test@test.com", password: "password")
+# User.create!(email: "test@test.com", password: "password")
 
 
 
