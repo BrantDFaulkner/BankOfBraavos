@@ -2,7 +2,7 @@
 
 <h3><span>Rank: </span><%= @member.title %></h3>
 
-<h3><span>Awarded: War Hero: </span></h3>
+<h3><span>Awarded War Hero: </span></h3>
 <% @hero_wars.each do |war|%>
   <%= render 'wars/scoreboard', war: war %>
 <% end %>
