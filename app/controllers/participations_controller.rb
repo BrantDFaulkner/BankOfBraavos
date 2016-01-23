@@ -22,7 +22,6 @@ class ParticipationsController < ApplicationController
   end
 
   def create
-    p params
     @participation = Participation.new(participation_params)
     if @participation.save
       redirect_to :back, notice: "Participant was added to the war."
@@ -36,7 +35,7 @@ class ParticipationsController < ApplicationController
   def update
     respond_to do |format|
       if @participation.update(participation_params)
-        format.html { redirect_to @participation, notice: 'participation was successfully updated.' }
+        format.html { redirect_to @participation, notice: 'Participant was removed from war' }
         format.json { render :show, status: :ok, location: @participation }
       else
         format.html { render :edit }
@@ -49,16 +48,13 @@ class ParticipationsController < ApplicationController
   # DELETE /participations/1.json
   def destroy
     @participation.destroy
-    respond_to do |format|
-      format.html { redirect_to participations_url, notice: 'participation was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to :back, notice: 'Participation was successfully destroyed.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_participant
-      @participant = Participation.find(params[:id])
+    def set_participation
+      @participation = Participation.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

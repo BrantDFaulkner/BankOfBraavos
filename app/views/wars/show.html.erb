@@ -84,15 +84,6 @@
   <% end %>
 
 
-
-
-
-
-
-
-
-
-
 <!-- Participants -->
   <h3><span>Participants: </span><%= @participants.length %></h3>
 
@@ -112,15 +103,9 @@
   <% end %>
 
 <!-- Show participants -->
-  <% @participants.each do |participant| %>
-    <%= render 'participations/participant', participant: participant %>
+  <% @participations.each do |participation| %>
+    <%= render 'participations/participant', participation: participation %>
   <% end %>
-
-
-
-
-
-
 
 
 </div><!-- #war_show -->
