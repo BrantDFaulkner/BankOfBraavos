@@ -40,8 +40,8 @@ class MembersController < ApplicationController
     @ranks = Rank.all.map do |rank|
       [rank.title, rank.id]
     end
-    @statuses = Status.all.map do |status|
-      [status.description, status.id]
+    @statuses = ActivityStatus.all.map do |status|
+      [status.status, status.id]
     end
   end
 
@@ -53,15 +53,10 @@ class MembersController < ApplicationController
   # POST /members.json
   def create
     @member = Member.new(member_params)
-
-    respond_to do |format|
-      if @member.save
-        format.html { redirect_to @member, notice: 'Member was successfully created.' }
-        format.json { render :show, status: :created, location: @member }
-      else
-        format.html { render :new }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
-      end
+    if @member.save
+      redirect_to members_path, notice: "#{@member.user_name} was successfully created."
+    else
+      render :new
     end
   end
 
@@ -97,6 +92,6 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:user_name, :rank_id, :status_id)
+      params.require(:member).permit(:user_name, :rank_id, :activity_status_id)
     end
 end
