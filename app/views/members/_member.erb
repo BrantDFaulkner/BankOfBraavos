@@ -5,8 +5,7 @@
 
 
   <% if user_signed_in? %>
-  <%= link_to 'Edit', edit_member_path(member), class: "admin" %>
-  <%= link_to 'Destroy', member, class: "admin", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Edit', edit_member_path(member), class: "admin" %>
   <% end %>
 </div>
 <% end %>

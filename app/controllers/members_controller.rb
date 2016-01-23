@@ -13,7 +13,6 @@ class MembersController < ApplicationController
       @elders << member if member.title == "Elder"
       @members << member if member.title == "Member"
     end
-
   end
 
   def show
@@ -28,25 +27,29 @@ class MembersController < ApplicationController
     @violation_wars = @member.violations.map do |violation|
       violation.war
     end
-
-
-
-
   end
 
   # GET /members/new
   def new
     @member = Member.new
-    @ranks = Rank.all.map do |rank|
+    @select_rank = Rank.all.map do |rank|
       [rank.title, rank.id]
     end
-    @statuses = ActivityStatus.all.map do |status|
+
+    @select_activity_status = ActivityStatus.all.map do |status|
       [status.status, status.id]
     end
   end
 
   # GET /members/1/edit
   def edit
+    @select_rank = Rank.all.map do |rank|
+      [rank.title, rank.id]
+    end
+
+    @select_activity_status = ActivityStatus.all.map do |status|
+      [status.status, status.id]
+    end
   end
 
   # POST /members

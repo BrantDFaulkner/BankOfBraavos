@@ -1,4 +1,5 @@
 <h1>Clan Members</h1>
+<%= link_to "Inactive Members",  activity_statuses_path %><br>
 
 <% if user_signed_in? %>
 <%= link_to 'Add Member', new_member_path, class: "btn btn-success" %>

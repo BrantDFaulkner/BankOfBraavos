@@ -1,10 +1,10 @@
 class ActivityStatusesController < ApplicationController
   before_action :set_activity_status, only: [:show, :edit, :update, :destroy]
 
-  # GET /activity_statuses
-  # GET /activity_statuses.json
   def index
-    @activity_statuses = ActivityStatus.all
+    @inactive = ActivityStatus.find_by_id(2).members
+    @temp_kicked = ActivityStatus.find_by_id(3).members
+    @banned = ActivityStatus.find_by_id(4).members
   end
 
   # GET /activity_statuses/1
