@@ -32,6 +32,7 @@ class War < ActiveRecord::Base
   end
 
   def initialize_properties
+    self.opponent = opponent.upcase
     self.war_result_id = 1
     self.stars = 0
     self.destruction = 0.0
