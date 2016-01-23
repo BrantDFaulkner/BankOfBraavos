@@ -1,3 +1,3 @@
 class Rank < ActiveRecord::Base
-  # has_many :members
+  has_many :members
 end

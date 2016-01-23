@@ -2,7 +2,7 @@ class WarsController < ApplicationController
   before_action :set_war, only: [:show, :edit, :update, :destroy]
 
   def index
-    @wars = War.all
+    @wars = War.all.order(created_at: :desc)
   end
 
   def show
