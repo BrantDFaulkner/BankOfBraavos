@@ -45,10 +45,10 @@ class ViolationsController < ApplicationController
   end
 
   def destroy
-    @violation.destroy
-    respond_to do |format|
-      format.html { redirect_to violations_url, notice: 'Violation was successfully destroyed.' }
-      format.json { head :no_content }
+    if @violation.destroy
+      redirect_to :back, notice: "Successfully removed #{@violation.user_name}'s war violation."
+    else
+      redirect_to :back
     end
   end
 
