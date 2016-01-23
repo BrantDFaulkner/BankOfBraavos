@@ -21,19 +21,12 @@ class ViolationsController < ApplicationController
   def edit
   end
 
-  # POST /violations
-  # POST /violations.json
   def create
     @violation = Violation.new(violation_params)
-
-    respond_to do |format|
-      if @violation.save
-        format.html { redirect_to @violation, notice: 'Violation was successfully created.' }
-        format.json { render :show, status: :created, location: @violation }
-      else
-        format.html { render :new }
-        format.json { render json: @violation.errors, status: :unprocessable_entity }
-      end
+    if @violation.save
+      redirect_to :back, notice: "#{@violation.user_name} has received a violation."
+    else
+      render :new
     end
   end
 
@@ -51,8 +44,6 @@ class ViolationsController < ApplicationController
     end
   end
 
-  # DELETE /violations/1
-  # DELETE /violations/1.json
   def destroy
     @violation.destroy
     respond_to do |format|
