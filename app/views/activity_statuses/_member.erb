@@ -1,0 +1,12 @@
+<% members.each do |member| %>
+<div class="member well well-sm">
+  <span><%= link_to member.user_name, member %></span> |
+  <span><%= member.title %></span>
+  <span><%= "#{member.status} since #{member.updated_at.strftime("%b %d, %Y")}" %></span>
+
+
+  <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_member_path(member), class: "admin" %>
+  <% end %>
+</div>
+<% end %>
