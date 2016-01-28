@@ -2,7 +2,12 @@
 <div class="member well well-sm">
   <span><%= link_to member.user_name, member %></span> |
   <span><%= member.rank.title %></span>
-
+  <% member.war_heros.each do %>
+    <%= image_tag "heroicon.png" %>
+  <% end %>
+  <% member.war_zeros.each do %>
+    <%= image_tag "zero.png" %>
+  <% end %>
 
   <% if user_signed_in? %>
     <%= link_to 'Edit', edit_member_path(member), class: "admin" %>
