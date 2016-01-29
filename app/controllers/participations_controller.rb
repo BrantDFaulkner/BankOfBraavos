@@ -1,4 +1,5 @@
 class ParticipationsController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :show]
   before_action :set_participation, only: [:show, :edit, :update, :destroy]
 
   # GET /participations

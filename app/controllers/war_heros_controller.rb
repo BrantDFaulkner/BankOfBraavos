@@ -1,4 +1,5 @@
 class WarHerosController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :show]
   before_action :set_war_hero, only: [:show, :edit, :update, :destroy]
 
   # GET /war_heros

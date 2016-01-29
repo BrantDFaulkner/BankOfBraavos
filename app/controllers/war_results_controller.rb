@@ -1,4 +1,5 @@
 class WarResultsController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :show]
   before_action :set_war_result, only: [:show, :edit, :update, :destroy]
 
   # GET /war_results
