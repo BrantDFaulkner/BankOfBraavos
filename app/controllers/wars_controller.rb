@@ -6,11 +6,13 @@ class WarsController < ApplicationController
   end
 
   def show
-    @participations = @war.participations
+
+    @participations = @war.participations.joins(:member).order('LOWER(members.user_name)')
+
     @war_heros = @war.war_heros
     @war_zeros = @war.war_zeros
     @violations = @war.violations
-    @participants = @war.participants
+    @participants = @war.participants#.order(:user_name)
 
     @participation = Participation.new
     @select_participant = (active_members - @participants).map do |participant|

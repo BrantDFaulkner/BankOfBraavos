@@ -7,6 +7,4 @@ class Participation< ActiveRecord::Base
   has_many :war_zeros
   has_many :violations
 
-
-
 end

@@ -1,2 +1,0 @@
-module WarResultsHelper
-end
