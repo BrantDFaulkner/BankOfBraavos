@@ -2,6 +2,8 @@
 
 <h1 class="page-header">Clan War History</h1>
 
+<h3>Win Percentage: <%= @win_percentage %>%</h3>
+
 <!-- Add War Button -->
 <% if user_signed_in? %>
   <%= link_to 'Add War', new_war_path, class: "btn btn-success" %>
