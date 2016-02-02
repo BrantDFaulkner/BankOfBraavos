@@ -2,11 +2,15 @@
 <div class="member well well-sm">
   <span><%= link_to member.user_name, member %></span> |
   <span><%= member.rank.title %></span>
+
+  <span class="badge" data-toggle="tooltip" data-placement="top" title="Total Wars"><%= member.participations.length%></span>
+
   <% member.war_heros.each do %>
-    <%= image_tag "heroicon.png" %>
+    <img src="/assets/heroicon.png" data-toggle="tooltip" data-placement="top" title="War Hero" />
   <% end %>
+
   <% member.war_zeros.each do %>
-    <%= image_tag "zero.png" %>
+    <img src="/assets/zero.png" data-toggle="tooltip" data-placement="top" title="War Zero" />
   <% end %>
 
   <% if user_signed_in? %>

@@ -11,5 +11,4 @@ class Member < ActiveRecord::Base
   has_many :war_zeros, through: :participations
   has_many :violations, through: :participations
 
-
 end
