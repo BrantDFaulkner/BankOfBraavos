@@ -6,11 +6,11 @@
   <span class="badge" data-toggle="tooltip" data-placement="top" title="Total Wars"><%= member.participations.length%></span>
 
   <% member.war_heros.each do %>
-    <img src="/assets/heroicon.png" data-toggle="tooltip" data-placement="top" title="War Hero" />
+    <span data-toggle="tooltip" data-placement="top" title="War Hero"><%= image_tag "heroicon.png" %></span>
   <% end %>
 
   <% member.war_zeros.each do %>
-    <img src="/assets/zero.png" data-toggle="tooltip" data-placement="top" title="War Zero" />
+    <span data-toggle="tooltip" data-placement="top" title="War Zero"><%= image_tag "zero.png" %></span>
   <% end %>
 
   <% if user_signed_in? %>
