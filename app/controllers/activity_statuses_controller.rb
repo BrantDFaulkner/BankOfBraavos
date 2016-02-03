@@ -3,9 +3,9 @@ class ActivityStatusesController < ApplicationController
   before_action :set_activity_status, only: [:show, :edit, :update, :destroy]
 
   def index
-    @inactive = ActivityStatus.find_by_id(2).members.order(updated_at: :desc)
-    @temp_kicked = ActivityStatus.find_by_id(3).members.order(updated_at: :desc)
-    @banned = ActivityStatus.find_by_id(4).members.order(updated_at: :desc)
+    @inactive = ActivityStatus.inactive
+    @temp_kicked = ActivityStatus.temp_kicked
+    @banned = ActivityStatus.banned
   end
 
   # GET /activity_statuses/1
