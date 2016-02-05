@@ -60,6 +60,13 @@ class MembersController < ApplicationController
     if @member.save
       redirect_to members_path, notice: "#{@member.user_name} was successfully created."
     else
+      @select_rank = Rank.all.map do |rank|
+        [rank.title, rank.id]
+      end
+
+      @select_activity_status = ActivityStatus.all.map do |status|
+        [status.status, status.id]
+      end
       render :new
     end
   end
