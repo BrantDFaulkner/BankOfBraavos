@@ -17,21 +17,6 @@
 <!-- WAR HERO -->
   <h3><span>War Hero: </span></h3>
 
-<!-- ADD WAR HERO -->
-  <% if user_signed_in? %>
-    <%= form_for(@war_hero) do |f| %>
-      <div class="field">
-        <%= f.select(:participation_id, @select_war_hero) %>
-      </div>
-      <div class="field">
-        Reason: <%= f.text_field :reason %>
-      </div>
-      <div class="actions">
-        <%= f.submit "Add War Hero", class: "btn btn-success" %>
-      </div>
-    <% end %>
-  <% end %>
-
 <!-- SHOW WAR HERO -->
   <% @war_heros.each do |war_hero| %>
     <%= render 'war_heros/war_hero', war_hero: war_hero %>
@@ -39,21 +24,6 @@
 
 <!-- WAR ZERO -->
   <h3><span>War zero: </span></h3>
-
-<!-- ADD WAR ZERO -->
-  <% if user_signed_in? %>
-    <%= form_for(@war_zero) do |f| %>
-      <div class="field">
-        <%= f.select(:participation_id, @select_war_zero) %>
-      </div>
-      <div class="field">
-        Reason: <%= f.text_field :reason %>
-      </div>
-      <div class="actions">
-        <%= f.submit "Add War Zero", class: "btn btn-danger" %>
-      </div>
-    <% end %>
-  <% end %>
 
 <!-- SHOW WAR zero -->
   <% @war_zeros.each do |war_zero| %>
@@ -63,49 +33,17 @@
 <!-- VIOLATIONS -->
   <h3><span>Violations: </span></h3>
 
-<!-- ADD VIOLATION-->
-  <% if user_signed_in? %>
-    <%= form_for(@violation) do |f| %>
-      <div class="field">
-        <%= f.select(:participation_id, @select_violator) %>
-      </div>
-      <div class="field">
-        <%= f.select(:violation_type_id, @select_violation_type) %>
-      </div>
-      <div class="actions">
-        <%= f.submit "Add Violation", class: "btn btn-danger" %>
-      </div>
-    <% end %>
-  <% end %>
-
 <!-- SHOW VIOLATIONS -->
   <% @violations.each do |violation| %>
     <%= render 'violations/war_violation', violation: violation %>
   <% end %>
 
-
 <!-- Participants -->
   <h3><span>Participants: </span><%= @participants.length %></h3>
-
-<!-- Add Participants -->
-  <% if user_signed_in? %>
-
-    <%= form_for(@participation) do |f| %>
-      <%= f.hidden_field :war_id, :value => @war.id %>
-      <div class="field">
-        <%= f.select(:member_id, @select_participant) %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Add Participant", class: "btn btn-success"%>
-      </div>
-    <% end %>
-  <% end %>
 
 <!-- Show participants -->
   <% @participations.each do |participation| %>
     <%= render 'participations/participant', participation: participation %>
   <% end %>
-
 
 </div><!-- #war_show -->

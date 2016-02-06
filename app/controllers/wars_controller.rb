@@ -11,7 +11,6 @@ class WarsController < ApplicationController
   end
 
   def show
-
     @participations = @war.participations.joins(:member).order('LOWER(members.user_name)')
 
     @war_heros = @war.war_heros
@@ -50,6 +49,35 @@ class WarsController < ApplicationController
 
   # GET /wars/1/edit
   def edit
+    @participations = @war.participations.joins(:member).order('LOWER(members.user_name)')
+
+    @war_heros = @war.war_heros
+    @war_zeros = @war.war_zeros
+    @violations = @war.violations
+    @participants = @war.participants#.order(:user_name)
+
+    @participation = Participation.new
+    @select_participant = (active_members - @participants).map do |participant|
+      [participant.user_name, participant.id]
+    end
+
+    @war_hero = WarHero.new
+    @select_war_hero = @participations.map do |participation|
+      [participation.user_name, participation.id]
+    end
+
+    @war_zero = WarZero.new
+    @select_war_zero = @participations.map do |participation|
+      [participation.user_name, participation.id]
+    end
+
+    @violation = Violation.new
+    @select_violator = @participations.map do |participation|
+      [participation.user_name, participation.id]
+    end
+    @select_violation_type = ViolationType.all.map do |type|
+      [type.description, type.id]
+    end
   end
 
   def create
@@ -66,7 +94,7 @@ class WarsController < ApplicationController
     @war.assign_attributes(war_params)
     @war.assign_war_result_id
     if @war.save
-      redirect_to @war, notice: 'War was successfully updated.'
+      redirect_to :back, notice: 'War was successfully updated.'
     else
       render :edit
     end

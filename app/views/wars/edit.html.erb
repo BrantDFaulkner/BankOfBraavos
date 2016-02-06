@@ -1,28 +1,125 @@
-<h1 class="page-header">Edit: Bank of Bravos vs. <%=@war.opponent%></h1>
+<div id="war_edit">
 
-<%= form_for(@war) do |f| %>
-  <div class="field">
-    Opponent: <%= f.text_field :opponent %>
-  </div>
+  <h1 class="page-header">Edit: Bank of Bravos vs. <%=@war.opponent%></h1>
 
-  <div class="field">
-    Bank of Braavos Stars: <%= f.select :stars, Array(0..150) %>
-  </div>
+<h3><span>War Details: </span></h3>
+  <%= form_for(@war) do |f| %>
+    <div class="">
+      Opponent: <%= f.text_field :opponent %>
+    </div>
 
-  <div class="field">
-    Bank of Braavos Destruction %: <%= f.number_field :destruction, :step => 0.01 %>
-  </div>
+    <div class="">
+      Bank of Braavos Stars: <%= f.select :stars, Array(0..150) %>
+    </div>
 
-  <div class="field">
-    Opponent Stars: <%= f.select :opp_stars, Array(0..150) %>
-  </div>
+    <div class="">
+      Bank of Braavos Destruction %: <%= f.number_field :destruction, :step => 0.01 %>
+    </div>
 
-  <div class="field">
-    Opponent Destruction %: <%= f.number_field :opp_destruction, :step => 0.01 %>
-  </div>
+    <div class="">
+      Opponent Stars: <%= f.select :opp_stars, Array(0..150) %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Save Edits", class: "btn btn-success" %>
-  </div>
-<% end %>
+    <div class="">
+      Opponent Destruction %: <%= f.number_field :opp_destruction, :step => 0.01 %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Save Details", class: "btn btn-success" %>
+    </div>
+  <% end %>
+
+  <!-- WAR HERO -->
+    <h3><span>War Hero: </span></h3>
+
+  <!-- SHOW WAR HERO -->
+    <% @war_heros.each do |war_hero| %>
+      <%= render 'war_heros/war_hero', war_hero: war_hero %>
+    <% end %>
+
+  <!-- ADD WAR HERO -->
+    <% if user_signed_in? %>
+      <%= form_for(@war_hero) do |f| %>
+        <div class="field">
+          <%= f.select(:participation_id, @select_war_hero) %>
+        </div>
+        <div class="field">
+          Reason: <%= f.text_field :reason %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Add War Hero", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    <% end %>
+
+  <!-- WAR ZERO -->
+  <h3><span>War zero: </span></h3>
+
+  <!-- ADD WAR ZERO -->
+    <% if user_signed_in? %>
+      <%= form_for(@war_zero) do |f| %>
+        <div class="field">
+          <%= f.select(:participation_id, @select_war_zero) %>
+        </div>
+        <div class="field">
+          Reason: <%= f.text_field :reason %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Add War Zero", class: "btn btn-danger" %>
+        </div>
+      <% end %>
+    <% end %>
+
+  <!-- SHOW WAR zero -->
+    <% @war_zeros.each do |war_zero| %>
+      <%= render 'war_zeros/war_zero', war_zero: war_zero %>
+    <% end %>
+
+  <!-- VIOLATIONS -->
+  <h3><span>Violations: </span></h3>
+
+  <!-- ADD VIOLATION-->
+    <% if user_signed_in? %>
+      <%= form_for(@violation) do |f| %>
+        <div class="field">
+          <%= f.select(:participation_id, @select_violator) %>
+        </div>
+        <div class="field">
+          <%= f.select(:violation_type_id, @select_violation_type) %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Add Violation", class: "btn btn-danger" %>
+        </div>
+      <% end %>
+    <% end %>
+
+  <!-- SHOW VIOLATIONS -->
+    <% @violations.each do |violation| %>
+      <%= render 'violations/war_violation', violation: violation %>
+    <% end %>
+
+  <!-- Participants -->
+    <h3><span>Participants: </span><%= @participants.length %></h3>
+
+  <!-- Add Participants -->
+    <% if user_signed_in? %>
+
+      <%= form_for(@participation) do |f| %>
+        <%= f.hidden_field :war_id, :value => @war.id %>
+        <div class="field">
+          <%= f.select(:member_id, @select_participant) %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Add Participant", class: "btn btn-success"%>
+        </div>
+      <% end %>
+    <% end %>
+
+  <!-- Show participants -->
+    <% @participations.each do |participation| %>
+      <%= render 'participations/participant', participation: participation %>
+    <% end %>
+
+</div><!-- WAR EDIT -->
 
