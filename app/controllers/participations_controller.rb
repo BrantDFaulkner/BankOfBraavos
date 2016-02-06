@@ -3,13 +3,11 @@ class ParticipationsController < ApplicationController
   before_action :set_participation, only: [:show, :edit, :update, :destroy]
 
   # GET /participations
-  # GET /participations.json
   def index
     @participations = Participation.all
   end
 
   # GET /participations/1
-  # GET /participations/1.json
   def show
   end
 
@@ -32,7 +30,6 @@ class ParticipationsController < ApplicationController
   end
 
   # PATCH/PUT /participations/1
-  # PATCH/PUT /participations/1.json
   def update
     respond_to do |format|
       if @participation.update(participation_params)
@@ -46,7 +43,6 @@ class ParticipationsController < ApplicationController
   end
 
   # DELETE /participations/1
-  # DELETE /participations/1.json
   def destroy
     @participation.destroy
     redirect_to :back, notice: 'Participation was successfully destroyed.'

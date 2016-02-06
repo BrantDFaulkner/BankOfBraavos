@@ -2,17 +2,33 @@
 
 <h3><span>Rank: </span><%= @member.title %></h3>
 
-<h3><span>Awarded War Hero: </span></h3>
+<h3>
+  <span>Awarded War Hero: </span>
+  <% if @hero_wars.empty? %>
+    None
+  <% end %>
+</h3>
+
 <% @hero_wars.each do |war|%>
   <%= render 'wars/scoreboard', war: war %>
 <% end %>
 
-<h3><span>Declared War Zero: </span></h3>
+<h3>
+  <span>Declared War Zero: </span>
+  <% if @zero_wars.empty? %>
+    None
+  <% end %>
+</h3>
 <% @zero_wars.each do |war|%>
   <%= render 'wars/scoreboard', war: war %>
 <% end %>
 
-<h3><span>Received Violation: </span></h3>
+<h3>
+  <span>Received Violation: </span>
+  <% if @violation_wars.empty? %>
+    None
+  <% end %>
+</h3>
 <% @violation_wars.each do |war|%>
   <%= render 'wars/scoreboard', war: war %>
 <% end %>
