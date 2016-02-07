@@ -34,7 +34,7 @@
 
   <!-- SHOW WAR HERO -->
     <% @war_heros.each do |war_hero| %>
-      <%= render 'war_heros/war_hero', war_hero: war_hero %>
+      <%= render 'war_heros/war_hero_admin', war_hero: war_hero %>
     <% end %>
 
   <!-- ADD WAR HERO -->
@@ -70,9 +70,9 @@
       <% end %>
     <% end %>
 
-  <!-- SHOW WAR zero -->
+  <!-- SHOW WAR ZERO -->
     <% @war_zeros.each do |war_zero| %>
-      <%= render 'war_zeros/war_zero', war_zero: war_zero %>
+      <%= render 'war_zeros/war_zero_admin', war_zero: war_zero %>
     <% end %>
 
   <!-- VIOLATIONS -->
@@ -95,7 +95,7 @@
 
   <!-- SHOW VIOLATIONS -->
     <% @violations.each do |violation| %>
-      <%= render 'violations/war_violation', violation: violation %>
+      <%= render 'violations/war_violation_admin', violation: violation %>
     <% end %>
 
   <!-- Participants -->
@@ -118,7 +118,7 @@
 
   <!-- Show participants -->
     <% @participations.each do |participation| %>
-      <%= render 'participations/participant', participation: participation %>
+      <%= render 'participations/participant_admin', participation: participation %>
     <% end %>
 
 </div><!-- WAR EDIT -->

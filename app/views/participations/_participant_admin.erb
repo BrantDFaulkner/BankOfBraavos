@@ -1,5 +1,8 @@
-
 <div class="member well well-sm">
   <span><%= link_to participation.user_name, member_path(participation.member) %></span> |
   <span><%= participation.member.title %></span>
+
+  <% if user_signed_in? %>
+  <%= link_to 'remove from war', participation, class: "admin", method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
 </div>

@@ -16,30 +16,7 @@ class WarsController < ApplicationController
     @war_heros = @war.war_heros
     @war_zeros = @war.war_zeros
     @violations = @war.violations
-    @participants = @war.participants#.order(:user_name)
-
-    @participation = Participation.new
-    @select_participant = (active_members - @participants).map do |participant|
-      [participant.user_name, participant.id]
-    end
-
-    @war_hero = WarHero.new
-    @select_war_hero = @participations.map do |participation|
-      [participation.user_name, participation.id]
-    end
-
-    @war_zero = WarZero.new
-    @select_war_zero = @participations.map do |participation|
-      [participation.user_name, participation.id]
-    end
-
-    @violation = Violation.new
-    @select_violator = @participations.map do |participation|
-      [participation.user_name, participation.id]
-    end
-    @select_violation_type = ViolationType.all.map do |type|
-      [type.description, type.id]
-    end
+    @participants = @war.participants
   end#show
 
   # GET /wars/new

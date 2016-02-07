@@ -2,4 +2,8 @@
   <span><%= link_to war_zero.user_name, member_path(war_zero.member) %></span> |
   <span><%= war_zero.title %></span> |
   <%= war_zero.reason %>
+
+  <% if user_signed_in? %>
+  <%= link_to 'delete', war_zero, class: "admin", method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
 </div>
