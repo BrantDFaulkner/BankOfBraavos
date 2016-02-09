@@ -8,4 +8,4 @@ The rails backend makes great use of Active Record Associations between models.
 
 Project is live, [BankofBraavos.](https://bankofbraavos.herokuapp.com)
 
-[<img src="schema.png">]
+<img src="schema.png">
