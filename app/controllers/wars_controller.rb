@@ -7,7 +7,6 @@ class WarsController < ApplicationController
     wins = WarResult.find(2).wars.length
     losses = WarResult.find(3).wars.length
     @win_percentage = ((wins.to_f / (wins+losses)) * 100).round(2)
-
   end
 
   def show

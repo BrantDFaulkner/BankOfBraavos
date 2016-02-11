@@ -1,19 +1,15 @@
 Rails.application.routes.draw do
   resources :activity_statuses, only: [:index]
-  resources :war_zeros
-  resources :war_heros
-  get 'pages/welcome'
-
-  get 'pages/policy'
-
-  get 'welcome/policy'
-
-  resources :violations
-  resources :violation_types
-  resources :participations
+  resources :war_zeros, only: [:create, :destroy]
+  resources :war_heros, only: [:create, :destroy]
+  resources :violations, only: [:create, :destroy]
+  resources :participations, only: [:create, :destroy]
   resources :wars
   resources :members
-  resources :ranks
+
+  get 'pages/welcome'
+  get 'pages/policy'
+
   devise_for :users, skip: :registration
 
   # The priority is based upon order of creation: first created -> highest priority.

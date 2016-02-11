@@ -54,7 +54,6 @@ class MembersController < ApplicationController
   end
 
   # POST /members
-  # POST /members.json
   def create
     @member = Member.new(member_params)
     if @member.save
@@ -72,18 +71,15 @@ class MembersController < ApplicationController
   end
 
   # PATCH/PUT /members/1
-  # PATCH/PUT /members/1.json
   def update
-      if @member.update(member_params)
-        redirect_to members_path, notice: "#{@member.user_name} was successfully updated."
-      else
-        render :edit
-      end
-
+    if @member.update(member_params)
+      redirect_to members_path, notice: "#{@member.user_name} was successfully updated."
+    else
+      render :edit
+    end
   end
 
   # DELETE /members/1
-  # DELETE /members/1.json
   def destroy
     @member.destroy
     respond_to do |format|
