@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :activity_statuses, only: [:index]
-  resources :war_results
   resources :war_zeros
   resources :war_heros
   get 'pages/welcome'

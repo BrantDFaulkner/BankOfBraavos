@@ -3,7 +3,5 @@
   <span><%= war_hero.title %></span> |
   <%= war_hero.reason %>
 
-  <% if user_signed_in? %>
   <%= link_to 'delete', war_hero, class: "admin", method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
 </div>
